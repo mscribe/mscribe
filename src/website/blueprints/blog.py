@@ -8,4 +8,4 @@ blog_blueprint = Blueprint(name="blog",
 
 @blog_blueprint.route("/blog/")
 def blog() -> None:
-    return render_template("blog.html")
+    return render_template("blogpost.html")

@@ -1,4 +1,4 @@
-@import './variables.css';
+@import './static.css';
 
 .navbar-bar {
     display: flex;
@@ -12,7 +12,8 @@
     font-size: 32px;
     font-family: var(--font);
     font-weight: bold;
-    color: var(--primary-color)
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
 .navbar-search-container {

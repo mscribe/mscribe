@@ -1,4 +1,4 @@
-@import './variables.css';
+@import './sic.css';
 
 .blogbox-post {
     display: flex;
@@ -70,7 +70,7 @@
     height: 18px;
 }
 
-.blogbox-stat {
+.blogbox-stats {
     display: flex;
     gap: 5px;
     border-radius: 8px;
