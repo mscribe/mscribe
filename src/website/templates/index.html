@@ -1,8 +1,18 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ url_for ('static', filename='css/index.css') }}">
     </head>
     <body>
+        {% import 'macros/navbar.html' as navbar %}
+        {% import 'macros/footer.html' as footer %}
+
+        {% navbar.navbar() %}        
+        
         <p>Hello world</p>
+
+        {% footer.footer() %}
+        
     </body>
 </html>

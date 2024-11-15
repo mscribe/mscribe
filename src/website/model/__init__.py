@@ -16,6 +16,8 @@ class Translation(database.Model):
     language_code = Column(String(3), nullable=False)
     key = Column(String(120), nullable=False)
     value = Column(String(8000), nullable=False)
+    created_date = Column(DateTime(), default=func.now())
+    updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
 
 
 class Blog(database.Model):
@@ -25,3 +27,4 @@ class Blog(database.Model):
     title_translation_key = Column(String(120), nullable=False, unique=True)
     body_translation_key = Column(String(120), nullable=False, unique=True)
     created_date = Column(DateTime(), default=func.now())
+    updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
