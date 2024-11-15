@@ -1,9 +1,15 @@
 @import './static.css';
 
 
+.blogcontent-content{
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
 .blogcontent-header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .blogcontent-title {
@@ -16,6 +22,14 @@
     font-family: var(--font);
     font-size: var(--font-size-base);
     color: var(--accent-color-shade1);
+}
+
+.blogcontent-image {
+    width: 820px;
+    height: 500px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    object-fit: cover;
 }
 
 .blogcontent-icon {
@@ -65,6 +79,4 @@
     font-size: var(--font-size-medium);
     text-align: justify;
     margin-bottom: 12px;
-    padding-left: 300px;
-    padding-right: 300px;
 }
