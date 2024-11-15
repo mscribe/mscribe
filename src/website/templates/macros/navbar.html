@@ -1,14 +1,14 @@
 {% macro navbar() %}
-<nav class="navbar">
+<nav class="navbar-bar">
     <div>
-        <p class="title">TadaBlog</p>
+        <p class="navbar-title">TadaBlog</p>
     </div>
 
     <div>
-        <form class="search-container" action="/search" method="get">
-            <input class="search-bar" type="text" name="query" placeholder="Search..." required>
-            <button class="search-button" type="submit">
-                <img class="search-image" src="{{ url_for('static', filename='images/search.svg') }}" alt="Button Image">
+        <form class="navbar-search-container" action="/search" method="get">
+            <input class="navbar-search-bar" type="text" name="query" placeholder="Search..." required>
+            <button class="navbar-search-button" type="submit">
+                <img class="navbar-search-image" src="{{ url_for('static', filename='images/search.svg') }}" alt="Button Image">
             </button>
         </form>
     </div>

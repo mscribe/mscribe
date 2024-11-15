@@ -4,16 +4,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ url_for ('static', filename='css/index.css') }}">
         <link rel="stylesheet" href="{{ url_for ('static', filename='css/navbar.css') }}">
+        <link rel="stylesheet" href="{{ url_for ('static', filename='css/blogbox.css') }}">
     </head>
     <body>
         {% import 'macros/navbar.html' as navbar %}
         {% import 'macros/footer.html' as footer %}
+        {% import 'macros/blogbox.html' as blogbox %}
 
         {{ navbar.navbar() }}
         
-        <p>Hello world</p>
+        <div class="blogs">
+            {{ blogbox.blogbox() }}
+        </div>
 
-        {{ footer.footer() }}
+        <!-- {{ footer.footer() }} -->
 
     </body>
 </html>
