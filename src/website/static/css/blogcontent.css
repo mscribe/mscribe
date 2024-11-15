@@ -34,11 +34,6 @@
     object-fit: cover;
 }
 
-.blogcontent-icon {
-    width: 18px;
-    height: 18px;
-}
-
 .blogcontent-tags {
     display: flex;
     gap: 10px;
@@ -47,12 +42,18 @@
 
 .blogcontent-stats {
     display: flex;
+    gap: 5px;
     border-radius: 8px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 10px;
     padding-right: 10px;
     background-color: var(--black-color);
+}
+
+.blogcontent-icon {
+    width: 18px;
+    height: 18px;
 }
 
 .blogcontent-details-text {
