@@ -1,3 +1,5 @@
+@import './variables.css';
+
 .blogbox-post {
     display: flex;
     flex-direction: column;
@@ -63,10 +65,10 @@
     border-radius: 8px;
     padding-top: 2px;
     padding-bottom: 2px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: white;
-    background-color: rgb(93, 93, 93);
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--white-color);
+    background-color: var(--black-color);
     display: flex;
     gap: 5px;
     
@@ -78,6 +80,6 @@
     padding-bottom: 2px;
     padding-left: 15px;
     padding-right: 15px;
-    color: white;
-    background-color: rgb(55, 184, 55);
+    color: var(--white-color);
+    background-color: var(--success-color);
 }

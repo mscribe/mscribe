@@ -1,33 +1,31 @@
+@import './variables.css';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-p, h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-}
-
 body {
-    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--white-color);
     padding: 20px;
     gap: 20px;
+    font-family: 'Courier New', Courier, monospace
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 10px;
+    padding: 40px;
+    gap: 30px;
 }
 
 .title {
     font-size: 32px;
     font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .blogs {
@@ -35,6 +33,5 @@ body {
     flex-wrap: wrap;
     align-items: center;
     gap: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
+
 }
