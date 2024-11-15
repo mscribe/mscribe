@@ -53,6 +53,16 @@
     margin-left: 5px;
 }
 
+@media (max-width: 700px) {
+    .navbar-search-bar {
+        display: none;
+    }
+
+    .navbar-search-button {
+        display: none;
+    }
+}
+
 .navbar-search-image {
     width: 22px;
     height: 22px;

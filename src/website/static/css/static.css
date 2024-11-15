@@ -3,7 +3,6 @@
     padding: 0;
 }
 
-
 body {
     display: flex;
     flex-direction: column;
@@ -11,14 +10,15 @@ body {
     gap: 20px;
     padding: 30px;
 }
-
 .content {
-    padding-left: 220px;
-    padding-right: 220px;
-
+    padding-left: 10%;
+    padding-right: 10%;
+    
 }
 
-a, a:link, a:visited {
+a,
+a:link,
+a:visited {
     text-decoration: none;
 }
 
