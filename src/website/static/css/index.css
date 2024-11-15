@@ -4,12 +4,25 @@
     box-sizing: border-box;
 }
 
+
+p, h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
 body {
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     background-color: white;
     padding: 20px;
     gap: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
 }
 
 .title {
