@@ -1,17 +1,23 @@
 {% macro blogbox() %}
 <div class="blogbox-post">
     <div class="blogbox-header">
-        <img class="blogbox-image" src="{{ url_for('static', filename='images/image.png') }}" alt="Blog Image">
+        <img class="blogbox-image" src="{{ url_for('static', filename='images/image.png') }}" alt="Blog">
     </div>
     <div class="blogbox-body">
         <div class="blogbox-info">
+            <p>02 Sep 2022</p>
             <p class="blogbox-title">Tada 420: Telport your cursor</p>
-            <p>5 minutes</p>
         </div>
         <div class="blogbox-details">
-            <p>difficulty</p>
-            <p>readers</p>
-            <p>shared time</p>
+            <div class="blogbox-stat">
+                <img class="blogbox-icon" src="{{ url_for('static', filename='images/clock.svg') }}" alt="clock">
+                <p>5 minutes</p>
+            </div>
+            <div class="blogbox-stat">
+                <img class="blogbox-icon" src="{{ url_for('static', filename='images/person.svg') }}" alt="person">
+                <p>2000</p>
+            </div>
+            <p class="blogbox-difficulty">Easy</p>
         </div>
     </div>
 </div>
