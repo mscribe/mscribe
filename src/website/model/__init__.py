@@ -1,13 +1,27 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column
+from sqlalchemy import String
+from sqlalchemy import Integer
+from sqlalchemy import DateTime
+from sqlalchemy.sql import func
 
 
 database = SQLAlchemy()
 
 
-class User(database.Model):
-    id = database.Column(database.Integer, primary_key=True)
-    email = database.Column(database.String(120), nullable=False, unique=True)
+class Translation(database.Model):
+    __tablename__ = "translation"
+
+    id = Column(Integer, primary_key=True)
+    language_code = Column(String(3), nullable=False)
+    key = Column(String(120), nullable=False)
+    value = Column(String(8000), nullable=False)
 
 
 class Blog(database.Model):
-    ...
+    __tablename__ = "Blog"
+    id = Column(Integer, primary_key=True)
+    key = Column(Integer, nullable=False, unique=True)
+    title_translation_key = Column(String(120), nullable=False, unique=True)
+    body_translation_key = Column(String(120), nullable=False, unique=True)
+    created_date = Column(DateTime(), default=func.now())
