@@ -1,20 +1,5 @@
 @import './variables.css';
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--white-color);
-    padding: 20px;
-    gap: 20px;
-    font-family: 'Courier New', Courier, monospace
-}
-
 .content {
     display: flex;
     flex-direction: column;
@@ -25,7 +10,8 @@ body {
 .title {
     font-size: 32px;
     font-weight: 800;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font);
+    color: var(--black-color);
 }
 
 .blogs {

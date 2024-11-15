@@ -1,14 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+    padding: 20px;
+    gap: 20px;
+}
+
 :root {
-    --primary-color: #5448C8;
-    --primary-color-shade1: #655ace;
-    --primary-color-shade2: #766dd3;
-    --primary-color-shade3: #877fd9;
+    --primary-color: #4100F5;
+    --primary-color-shade1: #6733f7;
+    --primary-color-shade2: #7a4df8;
+    --primary-color-shade3: #8d66f9;
 
     --secondary-color: #7F76C9;
     --secondary-color-shade1: #726ab5;
     --secondary-color-shade2: #665ea1;
     --secondary-color-shade3: #59538d;
-    
+
     --accent-color: #AAA3CA;
     --accent-color-shade1: #9993b6;
     --accent-color-shade2: #8882a2;
@@ -28,4 +42,14 @@
     --danger-color: #97622C;
     --danger-color-shade1: #AB7F53;
     --danger-color-shade2: #F1E6DC;
+
+    --font: 'Courier New', Courier, monospace;
+
+    --font-size-small: 12px;
+    --font-size-base: 16px;
+    --font-size-medium: 18px;
+    --font-size-large: 24px;
+    --font-size-xlarge: 32px;
+    --font-size-xxlarge: 40px;
+
 }

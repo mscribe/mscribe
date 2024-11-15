@@ -1,4 +1,5 @@
 from .blueprints import index_blueprint
+from .blueprints import blog_blueprint
 from .model import database
 
 from flask import Flask
@@ -11,6 +12,7 @@ def _set_config(app: Flask) -> None:
 
 def _register_blueprints(app: Flask) -> None:
     app.register_blueprint(index_blueprint)
+    app.register_blueprint(blog_blueprint)
 
 
 def _initilize_database(app: Flask) -> None:
