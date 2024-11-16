@@ -14,14 +14,13 @@
     {% import 'macros/blogbox.html' as blogbox %}
 
     {{ navbar.navbar() }}
-
     <div class="content">
         <div class="title">
             <h3>What to read today?</h3>
         </div>
 
         <div class="blogs">
-            {% if blogs %}
+            {% if blogs.items %}
             {% for blog in blogs %}
             {{ blogbox.blogbox(blog) }}
             {% endfor %}

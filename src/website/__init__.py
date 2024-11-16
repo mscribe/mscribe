@@ -7,7 +7,7 @@ from flask import Flask
 
 def _set_config(app: Flask) -> None:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 def _register_blueprints(app: Flask) -> None:
