@@ -25,8 +25,8 @@ OL_ITEM_REGEX = r'(?:<li class="blogcontent-ol-item"[^>]*>.*?<\/li>\s*)+'
 UL_ITEM_REGEX = r'(?:<li class="blogcontent-ul-item"[^>]*>.*?<\/li>\s*)+'
 
 OL_REGEX = r'^[0-9]+\.'
-BOLD_REGEX = r'\*\*[A-Za-z0-9 ]+\*\*'
-ITALIC_REGEX = r'\*[A-Za-z0-9 ]+\\*'
+BOLD_REGEX = r'\*\*.+\*\*'
+ITALIC_REGEX = r'\*.+\\*'
 IMAGE_REGEX = r'!\[([^\]]+)]\(([^)]+)\)'
 LINK_REGEX = r'\[([^\]]+)]\(([^)]+)\)'
 
@@ -38,13 +38,13 @@ class Converter:
         return cls.instance
 
     def _build(self, line: str) -> str:
-        self.headers = {1: H1_TAG, 2: H2_TAG, 3: H3_TAG,
-                        4: H4_TAG, 5: H5_TAG, 6: H6_TAG}
+        self._headers = {1: H1_TAG, 2: H2_TAG, 3: H3_TAG,
+                         4: H4_TAG, 5: H5_TAG, 6: H6_TAG}
 
         if line.startswith("# "):
             count = line.count("#")
             line = line.replace("# ", "")
-            return self.headers.get(count).replace("{{text}}", line)
+            return self._headers.get(count).replace("{{text}}", line)
         elif re.search(OL_REGEX, line):
             line = re.sub(OL_REGEX, "", line)
             return OL_ITEM.replace("{{text}}", line)
@@ -75,9 +75,12 @@ class Converter:
 
     def _format_italic(self, line: str) -> str:
         while True:
-            groups = re.search(BOLD_REGEX, line)
+            groups = re.search(ITALIC_REGEX, line)
             if groups:
                 group = groups.group(0)
+                print("="*20)
+                print(group)
+                print("="*20)
                 text = group.replace("*", "")
                 text = I_TAG.replace("{{text}}", text)
                 line = line.replace(group, text)
@@ -115,4 +118,5 @@ class Converter:
             html.append(line)
         html = "".join(html)
         html = self._build_lists(html)
+        print(html)
         return html
