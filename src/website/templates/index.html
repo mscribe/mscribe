@@ -21,9 +21,13 @@
         </div>
 
         <div class="blogs">
-            {{ blogbox.blogbox() }}
-            {{ blogbox.blogbox() }}
-            {{ blogbox.blogbox() }}
+            {% if blogs %}
+            {% for blog in blogs %}
+            {{ blogbox.blogbox(blog) }}
+            {% endfor %}
+            {% else %}
+            <p class="no-blogs">No blogs available.</p> <!-- Message when no blogs are present -->
+            {% endif %}
         </div>
     </div>
 </body>

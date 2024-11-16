@@ -20,3 +20,8 @@
     gap: 25px;
 
 }
+
+.no-blogs {
+    font-family: var(--font);
+    font-size: var(--font-size-base);
+}

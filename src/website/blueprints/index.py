@@ -8,4 +8,4 @@ index_blueprint = Blueprint(name="index",
 
 @index_blueprint.route("/")
 def index() -> None:
-    return render_template("index.html")
+    return render_template("index.html", blogs=[])

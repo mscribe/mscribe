@@ -8,6 +8,7 @@ from sqlalchemy import DateTime
 from sqlalchemy import Enum
 from sqlalchemy import ForeignKey
 from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
 
 
 database = SQLAlchemy()
@@ -54,7 +55,20 @@ class Blog(database.Model):
     image_url = Column(String(255), nullable=True)
     tk_difficulty = Column(String(120), nullable=False, unique=True)
     reading_time = Column(Integer, nullable=False)
-    readers = Column(Integer, nullable=False)
+    readers_count = Column(Integer, default=0, nullable=False)
     status = Column(Enum(BlogStatus), nullable=False)
     created_date = Column(DateTime(), default=func.now())
     updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
+
+    blog_readers = relationship("BlogReader", back_populates="blog")
+
+
+class BlogReader(database.Model):
+    __tablename__ = "BlogReader"
+
+    id = Column(Integer, primary_key=True)
+    reader_ip = Column(String(40), nullable=False)
+    blog_id = Column(Integer, ForeignKey('Blog.id'), nullable=False)
+    read_date = Column(DateTime(), default=func.now())
+
+    blog = relationship("Blog", back_populates="blog_readers")
