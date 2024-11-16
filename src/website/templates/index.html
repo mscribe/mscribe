@@ -15,8 +15,10 @@
 
     {{ navbar.navbar() }}
     <div class="content">
-        <div class="title">
-            <h3>What to read today?</h3>
+        <div class="header">
+            <div>
+                <p class="title">What to read today?</p>
+            </div>
         </div>
 
         <div class="blogs">
@@ -25,10 +27,25 @@
             {{ blogbox.blogbox(blog) }}
             {% endfor %}
             {% else %}
-            <p class="no-blogs">No blogs available.</p> <!-- Message when no blogs are present -->
+            <p class="no-blogs">No blogs available.</p>
+            {% endif %}
+        </div>
+
+        <div class="navigation">
+            {% if pagination.has_prev %}
+            <button class="navigation-button">Previous</button>
+            {% else %}
+            <button class="navigation-button" disabled>Previous</button>
+            {% endif %}
+
+            {% if pagination.has_next %}
+            <button class="navigation-button">Next</button>
+            {% else %}
+            <button class="navigation-button" disabled>Next</button>
             {% endif %}
         </div>
     </div>
+    <script src="{{ url_for ('static', filename='js/index.js') }}"></script>
 </body>
 
 </html>

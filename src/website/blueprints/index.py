@@ -10,8 +10,13 @@ index_blueprint = Blueprint(name="index",
 
 @index_blueprint.route("/")
 def index() -> None:
+    request.args.get('language', "en", type=str)
     page = request.args.get('page', 1, type=int)
     per_page = 20
-    blogs = Blog.query.order_by(Blog.created_date.desc())
-    blogs = blogs.paginate(page=page, per_page=per_page, error_out=False)
-    return render_template("index.html", blogs=blogs)
+
+    query = Blog.query.order_by(Blog.created_date.desc())
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False)
+
+    return render_template("index.html",
+                           blogs=pagination.items,
+                           pagination=pagination)
