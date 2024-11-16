@@ -14,9 +14,8 @@
     {% import 'macros/blogcontent.html' as blogcontent %}
 
     {{ navbar.navbar() }}
-
     <div class="content">
-        {{ blogcontent.blogcontent() }}
+        {{ blogcontent.blogcontent(html_content) }}
     </div>
 </body>
 
