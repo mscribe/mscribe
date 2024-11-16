@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/blogcontent.css') }}">
 </head>
-
 <body>
     {% import 'macros/navbar.html' as navbar %}
     {% import 'macros/footer.html' as footer %}
@@ -18,5 +17,4 @@
         {{ blogcontent.blogcontent(html_content) }}
     </div>
 </body>
-
 </html>
