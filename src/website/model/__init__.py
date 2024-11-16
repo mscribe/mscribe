@@ -1,8 +1,11 @@
+from enum import Enum as PyEnum
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import Integer
 from sqlalchemy import DateTime
+from sqlalchemy import Enum
 from sqlalchemy import ForeignKey
 from sqlalchemy.sql import func
 
@@ -38,12 +41,20 @@ class BlogTag(database.Model):
 
 class Blog(database.Model):
     __tablename__ = "Blog"
+
+    class BlogStatus(PyEnum):
+        DRAFT = "draft"
+        PUBLISHED = "published"
+        ARCHIVED = "ARCHIVED"
+
     id = Column(Integer, primary_key=True)
     key = Column(Integer, nullable=False, unique=True)
     tk_title = Column(String(120), nullable=False, unique=True)
     tk_body = Column(String(120), nullable=False, unique=True)
+    image_url = Column(String(255), nullable=True)
     tk_difficulty = Column(String(120), nullable=False, unique=True)
     reading_time = Column(Integer, nullable=False)
-    image_url = Column(String(255), nullable=True)
+    readers = Column(Integer, nullable=False)
+    status = Column(Enum(BlogStatus), nullable=False)
     created_date = Column(DateTime(), default=func.now())
     updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
