@@ -31,13 +31,15 @@
 
 .navigation {
     display: flex;
-    justify-content: center;
     gap: 10px;
     margin-top: 10px;
 }
 
 
 .navigation-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 90px;
     height: 30px;
     color: var(--white-color);
@@ -51,6 +53,8 @@
     cursor: pointer;
 }
 
-.navigation-button:disabled {
+.disabled {
     background-color: var(--accent-color-shade3);
+    cursor: not-allowed;
+    pointer-events: none;
 }

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/index.css') }}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/blogbox.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blogbox.css') }}">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="blogs">
-            {% if blogs.items %}
+            {% if blogs %}
             {% for blog in blogs %}
             {{ blogbox.blogbox(blog) }}
             {% endfor %}
@@ -33,19 +33,17 @@
 
         <div class="navigation">
             {% if pagination.has_prev %}
-            <button class="navigation-button">Previous</button>
+            <a href="{{ url_for('index.index', page=pagination.prev_num) }}" class="navigation-button">Previous</a>
             {% else %}
-            <button class="navigation-button" disabled>Previous</button>
+            <span class="navigation-button disabled">Previous</span>
             {% endif %}
-
             {% if pagination.has_next %}
-            <button class="navigation-button">Next</button>
+            <a href="{{ url_for('index.index', page=pagination.next_num) }}" class="navigation-button">Next</a>
             {% else %}
-            <button class="navigation-button" disabled>Next</button>
+            <span class="navigation-button disabled">Next</span>
             {% endif %}
         </div>
     </div>
-    <script src="{{ url_for ('static', filename='js/index.js') }}"></script>
 </body>
 
 </html>

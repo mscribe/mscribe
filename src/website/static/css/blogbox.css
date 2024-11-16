@@ -1,4 +1,4 @@
-@import './sic.css';
+@import './static.css';
 
 .blogbox-post {
     display: flex;
@@ -56,6 +56,8 @@
     color: var(--black-color);
     font-family: var(--font);
     font-size: var(--font-size-base);
+    text-wrap: wrap;
+    width: 300px;
     font-weight: bold;
 }
 

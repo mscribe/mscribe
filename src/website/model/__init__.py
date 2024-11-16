@@ -17,7 +17,7 @@ database = SQLAlchemy()
 class Translation(database.Model):
     __tablename__ = "translation"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     language_code = Column(String(3), nullable=False)
     key = Column(String(120), nullable=False)
     value = Column(String(8000), nullable=False)
@@ -27,7 +27,7 @@ class Translation(database.Model):
 
 class Tag(database.Model):
     __tablename__ = "Tag"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     tk_name = Column(String(100), nullable=False, unique=True)
     created_date = Column(DateTime(), default=func.now())
     updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
@@ -44,16 +44,16 @@ class Blog(database.Model):
     __tablename__ = "Blog"
 
     class BlogStatus(PyEnum):
-        DRAFT = "draft"
-        PUBLISHED = "published"
+        DRAFT = "DRAFT"
+        PUBLISHED = "PUBLISHED"
         ARCHIVED = "ARCHIVED"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     key = Column(Integer, nullable=False, unique=True)
     tk_title = Column(String(120), nullable=False, unique=True)
     tk_body = Column(String(120), nullable=False, unique=True)
     image_url = Column(String(255), nullable=True)
-    tk_difficulty = Column(String(120), nullable=False, unique=True)
+    tk_difficulty = Column(String(120), nullable=False)
     reading_time = Column(Integer, nullable=False)
     readers_count = Column(Integer, default=0, nullable=False)
     status = Column(Enum(BlogStatus), nullable=False)
@@ -66,7 +66,7 @@ class Blog(database.Model):
 class BlogReader(database.Model):
     __tablename__ = "BlogReader"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     reader_ip = Column(String(40), nullable=False)
     blog_id = Column(Integer, ForeignKey('Blog.id'), nullable=False)
     read_date = Column(DateTime(), default=func.now())

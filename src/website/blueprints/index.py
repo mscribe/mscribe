@@ -9,9 +9,9 @@ index_blueprint = Blueprint(name="index",
 
 
 @index_blueprint.route("/")
-def index() -> None:
-    request.args.get('language', "en", type=str)
-    page = request.args.get('page', 1, type=int)
+def index(page: int = 1) -> None:
+    request.args.get("language", "en", type=str)
+    page = request.args.get("page", 1, type=int)
     per_page = 20
 
     query = Blog.query.order_by(Blog.created_date.desc())
