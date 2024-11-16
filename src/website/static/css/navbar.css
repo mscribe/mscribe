@@ -9,7 +9,7 @@
 }
 
 .navbar-title {
-    font-size: 32px;
+    font-size: var(--font-size-xxlarge);
     font-family: var(--font);
     font-weight: bold;
     color: var(--primary-color);

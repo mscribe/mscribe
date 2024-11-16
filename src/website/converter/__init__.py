@@ -16,7 +16,7 @@ OL_ITEM = r'<li class="blogcontent-ol-item">{{text}}</li>'
 UL_ITEM = r'<li class="blogcontent-ul-item">{{text}}</li>'
 STRONG_TAG = r'<strong class="blogcontent-strong">{{text}}</strong>'
 I_TAG = r'<em class="blogcontent-em">{{text}}</em>'
-IMG_TAG = r'<img class="blogcontent-img" src="\2" alt="\1"/>'
+IMG_TAG = r'<center><img class="blogcontent-img" src="\2" alt="\1"/></center>'
 A_TAG = r'<a class="blogcontent-a" href="\2">\1</a>'
 HR_TAG = r'<hr class="blogcontent-hr">'
 BR_TAG = r'<br class="blogcontent-br">'
@@ -24,6 +24,7 @@ BR_TAG = r'<br class="blogcontent-br">'
 OL_ITEM_REGEX = r'(?:<li class="blogcontent-ol-item"[^>]*>.*?<\/li>\s*)+'
 UL_ITEM_REGEX = r'(?:<li class="blogcontent-ul-item"[^>]*>.*?<\/li>\s*)+'
 
+H_REGEX = r'[#]+ '
 OL_REGEX = r'^[0-9]+\.'
 BOLD_REGEX = r'\*\*.+\*\*'
 ITALIC_REGEX = r'\*.+\\*'
@@ -41,9 +42,10 @@ class Converter:
         self._headers = {1: H1_TAG, 2: H2_TAG, 3: H3_TAG,
                          4: H4_TAG, 5: H5_TAG, 6: H6_TAG}
 
-        if line.startswith("# "):
+        if line.startswith("#"):
             count = line.count("#")
-            line = line.replace("# ", "")
+            print(count)
+            line = re.sub(H_REGEX, "", line)
             return self._headers.get(count).replace("{{text}}", line)
         elif re.search(OL_REGEX, line):
             line = re.sub(OL_REGEX, "", line)
@@ -78,9 +80,6 @@ class Converter:
             groups = re.search(ITALIC_REGEX, line)
             if groups:
                 group = groups.group(0)
-                print("="*20)
-                print(group)
-                print("="*20)
                 text = group.replace("*", "")
                 text = I_TAG.replace("{{text}}", text)
                 line = line.replace(group, text)
@@ -118,5 +117,4 @@ class Converter:
             html.append(line)
         html = "".join(html)
         html = self._build_lists(html)
-        print(html)
         return html

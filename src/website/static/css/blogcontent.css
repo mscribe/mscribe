@@ -1,8 +1,7 @@
 @import './static.css';
 
 
-
-.blogcontent-content{
+.blogcontent-content {
     margin: 0 auto;
     width: auto;
     max-width: 850px;
@@ -16,8 +15,9 @@
 
 .blogcontent-title {
     font-family: var(--font);
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-xlarge);
     color: var(--black-color);
+    font-weight: bold;
 }
 
 .blogcontent-date {
@@ -77,9 +77,114 @@
     margin-bottom: 20px;
 }
 
-.blogcontent-text {
+/* Generated Content Style*/
+.blogcontent-h1 {
     font-family: var(--font);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-xlarge);
+}
+
+.blogcontent-h2 {
+    font-family: var(--font);
+    font-size: var(--font-size-large);
+}
+
+.blogcontent-h3 {
+    font-family: var(--font);
+    font-size: var(--font-size-meduim);
+}
+
+.blogcontent-h4 {
+    font-family: var(--font);
+    font-size: var(--font-size-base);
+}
+
+.blogcontent-h5 {
+    font-family: var(--font);
+    font-size: var(--font-size-small);
+}
+
+.blogcontent-h6 {
+    font-family: var(--font);
+    font-size: var(--font-size-small);
+}
+
+.blogcontent-p {
+    font-family: var(--font);
+    font-size: var(--font-size-base);
     text-align: justify;
-    margin-bottom: 12px;
+    line-height: 1.4em;
+}
+
+.blogcontent-ol {
+    font-family: var(--font);
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.blogcontent-ul {
+    font-family: var(--font);
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.blogcontent-ol-item {
+    font-family: var(--font);
+    font-size: var(--font-size-base);
+}
+
+.blogcontent-ul-item {
+    font-family: var(--font);
+    font-size: var(--font-size-base);
+}
+
+.blogcontent-strong {
+    font-family: var(--font);
+    font-size: var(--font-size-base);
+}
+
+.blogcontent-em {
+    font-family: var(--font);
+}
+
+.blogcontent-img {
+    font-family: var(--font);
+    width: auto;
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.blogcontent-a {
+    font-family: var(--font);
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.blogcontent-a:visited {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.blogcontent-hr {
+    font-family: var(--font);
+    border: 1px solid var(--black-color);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.blogcontent-br {
+    font-family: var(--font);
+}
+
+.blogcontent-ol-item {
+    font-family: var(--font);
+    margin-left: 3em;
+}
+
+.blogcontent-ul-item {
+    font-family: var(--font);
+    margin-left: 2.1em;
 }
