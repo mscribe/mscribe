@@ -21,29 +21,47 @@ H5_TAG = r'<h5 class="blogcontent-h5">\2</h5>'
 H6_REGEX = re.compile(r'(^###### )([A-Za-z0-9 ]+)', re.MULTILINE)
 H6_TAG = r'<h6 class="blogcontent-h6">\2</h6>'
 
-P_REGEX = re.compile(r'(^[A-Z-a-z0-9].+$)', re.MULTILINE)
-P_TAG = r'<p class="blogcontent-p">\0</p>'
+OL_ITEM_REGEX = re.compile(r'^([0-9]+.\s?)(.+)', re.MULTILINE)
+OL_ITEM_TAG = r'<li class="blogcontent-ol-item">\2</li>'
 
-OL_TAG = r'<ol class="blogcontent-ol">{{text}}</ol>'
-UL_TAG = r'<ul class="blogcontent-ul">{{text}}</ul>'
-OL_ITEM = r'<li class="blogcontent-ol-item">{{text}}</li>'
-UL_ITEM = r'<li class="blogcontent-ul-item">{{text}}</li>'
-STRONG_TAG = r'<strong class="blogcontent-strong">{{text}}</strong>'
-I_TAG = r'<em class="blogcontent-em">{{text}}</em>'
-IMG_TAG = r'<center><img class="blogcontent-img" src="\2" alt="\1"/></center>'
+UL_ITEM_REGEX = re.compile(r'^(\*\s?)(.+)', re.MULTILINE)
+UL_ITEM_TAG = r'<li class="blogcontent-ul-item">\2</li>'
+
+P_REGEX = re.compile(r'(^[A-Za-z0-9].+)', re.MULTILINE)
+P_TAG = r'<p class="blogcontent-p">\1</p>'
+
+STRONG_REGEX = re.compile(r'\*\*(.+)\*\*', re.MULTILINE)
+STRONG_TAG = r'<strong class="blogcontent-strong">\1</strong>'
+
+I_REGEX = re.compile(r'\*(.+)\*', re.MULTILINE)
+I_TAG = r'<em class="blogcontent-em">\1</em>'
+
+IMG_REGEX = re.compile(r'^\!\[(.+)\]\((.+)\)', re.MULTILINE)
+IMG_TAG = r'<img class="blogcontent-img" src="\2" alt="\1"/>'
+
+A_REGEX = re.compile(r'^\[(.+)\]\((.+)\)', re.MULTILINE)
 A_TAG = r'<a class="blogcontent-a" href="\2">\1</a>'
+
+HR_REGEX = re.compile(r'^(___)$', re.MULTILINE)
 HR_TAG = r'<hr class="blogcontent-hr">'
+
+BR_REGEX = re.compile(r'^\s*$')
 BR_TAG = r'<br class="blogcontent-br">'
 
-OL_ITEM_REGEX = r'(?:<li class="blogcontent-ol-item"[^>]*>.*?<\/li>\s*)+'
-UL_ITEM_REGEX = r'(?:<li class="blogcontent-ul-item"[^>]*>.*?<\/li>\s*)+'
+UL_REGEX = re.compile(r'(?:<li class="blogcontent-ul-item"[^>]*>.*?<\/li>\s*)+')  # noqa
+UL_TAG = r'<ul class="blogcontent-ul">\2</ul>'
 
-H_REGEX = r'[#]+ '
-OL_REGEX = r'^[0-9]+\.'
-BOLD_REGEX = r'\*\*.+\*\*'
-ITALIC_REGEX = r'\*.+\\*'
-IMAGE_REGEX = r'!\[([^\]]+)]\(([^)]+)\)'
-LINK_REGEX = r'\[([^\]]+)]\(([^)]+)\)'
+OL_REGEX = re.compile(r'(?:<li class="blogcontent-ol-item"[^>]*>.*?<\/li>\s*)+')  # noqa
+OL_TAG = r'<ol class="blogcontent-ol">\2</ol>'
+
+PRE_REGEX = re.compile(r'```([a-z]+)\n([\s\S]*?)\n```', re.MULTILINE)
+PRE_TAG = r'<pre language="\1">\2</pre>'
+
+# TABLE_HEADER = re.compile(r'^|#(.)+?#|', re.MULTILINE)
+# TABLE_CELL = re.compile(r'', re.MULTILINE)
+
+# TABLE_REGEX = ''
+# TABLE_TAG = ''
 
 
 class Converter:
@@ -60,44 +78,23 @@ class Converter:
             (H4_REGEX, H4_TAG),
             (H5_REGEX, H5_TAG),
             (H6_REGEX, H6_TAG),
+            (PRE_REGEX, PRE_TAG),
+            (OL_ITEM_REGEX, OL_ITEM_TAG),
+            (UL_ITEM_REGEX, UL_ITEM_TAG),
             (P_REGEX, P_TAG),
+            (STRONG_REGEX, STRONG_TAG),
+            (I_REGEX, I_TAG),
+            (IMG_REGEX, IMG_TAG),
+            (A_REGEX, A_TAG),
+            (HR_REGEX, HR_TAG),
+            (BR_REGEX, BR_TAG),
+            (UL_REGEX, UL_TAG),
+            (OL_REGEX, OL_TAG),
         ]
 
     def convert(self, markdown_text: str) -> str:
         html = markdown_text
         for pattern, replacement in self._patterns:
             html = re.sub(pattern, replacement, html)
+            print(html)
         return html
-
-
-"""
-# Header 1
-## Header 2
-# Header 1
-### Header 3
-#### Header 4
-##### Header 5
-###### Header 6
-
-This is a normal text.
-
-This is a paragrah with many sentences, that will take a placeholder here. Hopefully this is going to be clear.
-
-Some **bold text** and *italic text*.
-
-1. Ordered item 1
-2. Ordered item 2
-
-* Unordered item
-* Unordered item
-
-[Link text](http://example.com)
-
-![Alt text](http://example.com/image.jpg)
-
-___
-
-```python
-print("Hello, World!")
-```
-"""
