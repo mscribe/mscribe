@@ -1,4 +1,4 @@
-from website.converter import Converter
+from website.utils.converter import Converter
 
 from flask import Blueprint
 from flask import render_template
