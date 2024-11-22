@@ -4,8 +4,9 @@ import regex as re
 from website.utils.uuid import uuid
 
 
-ULI = uuid.uuid()
-OLI = uuid.uuid()
+ULI_OBJECT = f"<{uuid.uuid()}>"
+OLI_OBJECT = f"<{uuid.uuid()}>"
+BR_OBJECT = f"<{uuid.uuid()}>"
 
 H1_REGEX = re.compile(r'(^# )(.+)', re.MULTILINE)
 H1_TAG = r'<h1>\2</h1>'
@@ -26,10 +27,10 @@ H6_REGEX = re.compile(r'(^###### )(.+)', re.MULTILINE)
 H6_TAG = r'<h6>\2</h6>'
 
 OLI_REGEX = re.compile(r'^([0-9]+.\s?)(.+)\n', re.MULTILINE)
-OLI_TAG = rf'<{OLI}>\2</{OLI}>'
+OLI_TAG = rf'<{OLI_OBJECT}>\2</{OLI_OBJECT}>'
 
 ULI_REGEX = re.compile(r'^(\*\s?)(.+)\n', re.MULTILINE)
-ULI_TAG = rf'<{ULI}>\2</{ULI}>'
+ULI_TAG = rf'<{ULI_OBJECT}>\2</{ULI_OBJECT}>'
 
 P_REGEX = re.compile(r'(?<!code.+)(^[A-Za-z0-9].+)', re.MULTILINE)
 P_TAG = r'<p>\1</p>'
@@ -40,8 +41,11 @@ BOLD_TAG = r'<strong>\1</strong>'
 ITALIC_REGEX = re.compile(r'\*(.+?)\*', re.MULTILINE)
 ITALIC_TAG = r'<em>\1</em>'
 
-STROKE_REGEX = re.compile(r'-(.+?)-', re.MULTILINE)
-STROKE_TAG = '<del>\1</del>'
+STROKE_REGEX = re.compile(r'~(.+?)~', re.MULTILINE)
+STROKE_TAG = r'<del>\1</del>'
+
+BLOCKQUOTE_REGEX = re.compile(r'^>\s?(.+)', re.MULTILINE)
+BLOCKQUOTE_TAG = r'<blockquote>\1</blockquote>'
 
 IMG_REGEX = re.compile(r'^\!\[(.+)\]\((.+)\)', re.MULTILINE)
 IMG_TAG = r'<img src="\2" alt="\1"/>'
@@ -52,19 +56,21 @@ A_TAG = r'<a href="\2">\1</a>'
 HR_REGEX = re.compile(r'^(___)$', re.MULTILINE)
 HR_TAG = r'<hr>'
 
-BR_REGEX = re.compile(r'^\s*\n$', re.MULTILINE)
+BR_REGEX = re.compile(BR_OBJECT)
 BR_TAG = r'<br>'
 
-UL_REGEX = re.compile(rf'(<{ULI}>.*<\/{ULI}>)')
-UL_TAG = r'<ul>\1</ul>\n'
+UL_REGEX = re.compile(rf'(<{ULI_OBJECT}>.*<\/{ULI_OBJECT}>)', re.MULTILINE)
+UL_TAG = r'<ul>\1</ul>'
 
-OL_REGEX = re.compile(rf'(<{OLI}>.*<\/{OLI}>)')
-OL_TAG = r'<ol>\1</ol>\n'
+OL_REGEX = re.compile(rf'(<{OLI_OBJECT}>.*<\/{OLI_OBJECT}>)')
+OL_TAG = r'<ol>\1</ol>'
+
+CODEBLOCK_REGEX = re.compile(r'```[a-z]+\n[\s\S]*?\n```', re.MULTILINE)
 
 PRE_REGEX = re.compile(r'```([a-z]+)\n([\s\S]*?)\n```', re.MULTILINE)
 PRE_TAG = r'<pre><code language="\1">\2</code></pre>'
 
-LIST_ITEM_REGEX = re.compile(rf'(\<\/?)({OLI}|{ULI})(\>)')
+LIST_ITEM_REGEX = re.compile(rf'(\<\/?)({OLI_OBJECT}|{ULI_OBJECT})(\>)')
 LIST_ITEM_TAG = r'\1li\3'
 
 
@@ -75,14 +81,13 @@ class Converter:
         return cls.instance
 
     def __init__(self) -> None:
-        self._patterns = [
+        self._pre_patterns = [
             (H1_REGEX, H1_TAG),
             (H2_REGEX, H2_TAG),
             (H3_REGEX, H3_TAG),
             (H4_REGEX, H4_TAG),
             (H5_REGEX, H5_TAG),
             (H6_REGEX, H6_TAG),
-            (PRE_REGEX, PRE_TAG),
             (P_REGEX, P_TAG),
             (OLI_REGEX, OLI_TAG),
             (ULI_REGEX, ULI_TAG),
@@ -91,16 +96,57 @@ class Converter:
             (STROKE_REGEX, STROKE_TAG),
             (IMG_REGEX, IMG_TAG),
             (A_REGEX, A_TAG),
+            (BLOCKQUOTE_REGEX, BLOCKQUOTE_TAG),
             (HR_REGEX, HR_TAG),
-            (BR_REGEX, BR_TAG),
             (UL_REGEX, UL_TAG),
             (OL_REGEX, OL_TAG),
-            (LIST_ITEM_REGEX, LIST_ITEM_TAG),
         ]
+
+        self._post_patterns = [
+            (PRE_REGEX, PRE_TAG),
+            (LIST_ITEM_REGEX, LIST_ITEM_TAG),
+            (BR_REGEX, BR_TAG),
+        ]
+
+        self._code_blocks = {}
+
+    def _set_newlines(self, html: str) -> str:
+        html_lines = []
+        for x in html.splitlines():
+            if not x:
+                html_lines.append(BR_OBJECT)
+            else:
+                html_lines.append(x)
+        return "\n".join(html_lines)
+
+    def _preserve_code_blocks(self, html: str) -> str:
+        for x in re.findall(CODEBLOCK_REGEX, html):
+            uid = f"<{uuid.uuid()}>"
+            html = html.replace(x, uid)
+            self._code_blocks[uid] = x
+        return html
+
+    def _set_code_blocks(self, html: str) -> str:
+        for uid, code in self._code_blocks.items():
+            html = html.replace(uid, code)
+        return html
+
+    def _apply_pre_patterns(self, html: str) -> str:
+        for pattern, replacement in self._pre_patterns:
+            html = re.sub(pattern, replacement, html)
+        return html
+
+    def _apply_post_patterns(self, html: str) -> str:
+        for pattern, replacement in self._post_patterns:
+            html = re.sub(pattern, replacement, html)
+        return html
 
     def convert(self, markdown_text: str) -> str:
         html = markdown_text
-        for pattern, replacement in self._patterns:
-            html = re.sub(pattern, replacement, html)
+        html = self._set_newlines(html)
+        html = self._preserve_code_blocks(html)
+        html = self._apply_pre_patterns(html)
+        html = self._set_code_blocks(html)
+        html = self._apply_post_patterns(html)
         print(html)
         return html
