@@ -3,7 +3,6 @@ from __future__ import annotations
 import regex as re
 from website.utils.uuid import uuid
 
-
 ULI_OBJECT = f"<{uuid.uuid()}>"
 OLI_OBJECT = f"<{uuid.uuid()}>"
 BR_OBJECT = f"<{uuid.uuid()}>"
@@ -73,6 +72,10 @@ PRE_TAG = r'<pre><code language="\1">\2</code></pre>'
 LIST_ITEM_REGEX = re.compile(rf'(\<\/?)({OLI_OBJECT}|{ULI_OBJECT})(\>)')
 LIST_ITEM_TAG = r'\1li\3'
 
+TABLE_REGEX = re.compile(r'^\|(?:#[^|]+#\|)+$\n(^\|.+\|$\n?)+', re.MULTILINE)
+TABLE_CELL_REGEX = re.compile(r'\|([^|]+)')
+TABLE_ROW_REGEX = re.compile(r'^\|.+\|$')
+
 
 class Converter:
     def __new__(cls) -> Converter:
@@ -100,6 +103,7 @@ class Converter:
             (HR_REGEX, HR_TAG),
             (UL_REGEX, UL_TAG),
             (OL_REGEX, OL_TAG),
+            (TABLE_REGEX, lambda match: self._parse_table(match.group(0))),
         ]
 
         self._post_patterns = [
@@ -126,6 +130,29 @@ class Converter:
             self._code_blocks[uid] = x
         return html
 
+    def _parse_table(self, html: str) -> str:
+        lines = html.strip().splitlines()
+        html_table = ["<table>"]
+
+        headers = TABLE_CELL_REGEX.findall(lines[0])
+        html_table.append("<thead><tr>")
+        for header in headers:
+            html_table.append(f"<th>{header.strip('#').strip()}</th>")
+        html_table.append("</tr></thead>")
+
+        html_table.append("<tbody>")
+        for line in lines[1:]:
+            if TABLE_ROW_REGEX.match(line):
+                cells = TABLE_CELL_REGEX.findall(line)
+                html_table.append("<tr>")
+                for cell in cells:
+                    html_table.append(f"<td>{cell.strip()}</td>")
+                html_table.append("</tr>")
+        html_table.append("</tbody>")
+
+        html_table.append("</table>")
+        return "".join(html_table)
+
     def _set_code_blocks(self, html: str) -> str:
         for uid, code in self._code_blocks.items():
             html = html.replace(uid, code)
@@ -148,5 +175,4 @@ class Converter:
         html = self._apply_pre_patterns(html)
         html = self._set_code_blocks(html)
         html = self._apply_post_patterns(html)
-        print(html)
         return html
