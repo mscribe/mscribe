@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-import re
-from uuid import uuid4
+import regex as re
+from website.utils.uuid import uuid
 
 
-ULI = str(uuid4())
-OLI = str(uuid4())
+ULI = uuid.uuid()
+OLI = uuid.uuid()
 
 H1_REGEX = re.compile(r'(^# )(.+)', re.MULTILINE)
 H1_TAG = r'<h1>\2</h1>'
@@ -31,14 +31,17 @@ OLI_TAG = rf'<{OLI}>\2</{OLI}>'
 ULI_REGEX = re.compile(r'^(\*\s?)(.+)\n', re.MULTILINE)
 ULI_TAG = rf'<{ULI}>\2</{ULI}>'
 
-P_REGEX = re.compile(r'(^[A-Za-z0-9].+)', re.MULTILINE)
+P_REGEX = re.compile(r'(?<!code.+)(^[A-Za-z0-9].+)', re.MULTILINE)
 P_TAG = r'<p>\1</p>'
 
-STRONG_REGEX = re.compile(r'\*\*(.+?)\*\*', re.MULTILINE)
-STRONG_TAG = r'<strong>\1</strong>'
+BOLD_REGEX = re.compile(r'\*\*(.+?)\*\*', re.MULTILINE)
+BOLD_TAG = r'<strong>\1</strong>'
 
-I_REGEX = re.compile(r'\*(.+?)\*', re.MULTILINE)
-I_TAG = r'<em>\1</em>'
+ITALIC_REGEX = re.compile(r'\*(.+?)\*', re.MULTILINE)
+ITALIC_TAG = r'<em>\1</em>'
+
+STROKE_REGEX = re.compile(r'-(.+?)-', re.MULTILINE)
+STROKE_TAG = '<del>\1</del>'
 
 IMG_REGEX = re.compile(r'^\!\[(.+)\]\((.+)\)', re.MULTILINE)
 IMG_TAG = r'<img src="\2" alt="\1"/>'
@@ -49,7 +52,7 @@ A_TAG = r'<a href="\2">\1</a>'
 HR_REGEX = re.compile(r'^(___)$', re.MULTILINE)
 HR_TAG = r'<hr>'
 
-BR_REGEX = re.compile(r'^\s*$')
+BR_REGEX = re.compile(r'^\s*\n$', re.MULTILINE)
 BR_TAG = r'<br>'
 
 UL_REGEX = re.compile(rf'(<{ULI}>.*<\/{ULI}>)')
@@ -80,11 +83,12 @@ class Converter:
             (H5_REGEX, H5_TAG),
             (H6_REGEX, H6_TAG),
             (PRE_REGEX, PRE_TAG),
+            (P_REGEX, P_TAG),
             (OLI_REGEX, OLI_TAG),
             (ULI_REGEX, ULI_TAG),
-            (P_REGEX, P_TAG),
-            (STRONG_REGEX, STRONG_TAG),
-            (I_REGEX, I_TAG),
+            (BOLD_REGEX, BOLD_TAG),
+            (ITALIC_REGEX, ITALIC_TAG),
+            (STROKE_REGEX, STROKE_TAG),
             (IMG_REGEX, IMG_TAG),
             (A_REGEX, A_TAG),
             (HR_REGEX, HR_TAG),
@@ -98,4 +102,5 @@ class Converter:
         html = markdown_text
         for pattern, replacement in self._patterns:
             html = re.sub(pattern, replacement, html)
+        print(html)
         return html
