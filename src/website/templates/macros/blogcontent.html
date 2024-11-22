@@ -1,4 +1,6 @@
 {% macro blogcontent(html_content) %}
+<link rel="stylesheet" href="{{ url_for ('static', filename='css/blogcontent.css') }}">
+
 <div class="blogcontent-content">
     <img class="blogcontent-image" src="{{ url_for('static', filename='images/image.png') }}" alt="Blog">
     <hr class="blogcontent-divider">
