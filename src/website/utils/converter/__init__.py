@@ -34,11 +34,14 @@ ULI_TAG = rf'<{ULI_OBJECT}>\2</{ULI_OBJECT}>'
 P_REGEX = re.compile(r'(?<!code.+)(^[A-Za-z0-9].+)', re.MULTILINE)
 P_TAG = r'<p>\1</p>'
 
-BOLD_REGEX = re.compile(r'\*\*(.+?)\*\*', re.MULTILINE)
+BOLD_REGEX = re.compile(r'(?<!\*)\*\*(.+?)\*\*(?!\*)', re.MULTILINE)
 BOLD_TAG = r'<strong>\1</strong>'
 
-ITALIC_REGEX = re.compile(r'\*(.+?)\*', re.MULTILINE)
+ITALIC_REGEX = re.compile(r'(?<!\*)\*(.+?)\*(?!\*)', re.MULTILINE)
 ITALIC_TAG = r'<em>\1</em>'
+
+UNDLINE_REGEX = re.compile(r'(?<!_)_([^_]+?)_(?!_)', re.MULTILINE)
+UNDLINE_TAG = r'<u>\1</u>'
 
 STROKE_REGEX = re.compile(r'~(.+?)~', re.MULTILINE)
 STROKE_TAG = r'<del>\1</del>'
@@ -49,8 +52,8 @@ BLOCKQUOTE_TAG = r'<blockquote>\1</blockquote>'
 IMG_REGEX = re.compile(r'^\!\[(.+)\]\((.+)\)', re.MULTILINE)
 IMG_TAG = r'<img src="\2" alt="\1"/>'
 
-A_REGEX = re.compile(r'^\[(.+)\]\((.+)\)', re.MULTILINE)
-A_TAG = r'<a href="\2">\1</a>'
+LINK_REGEX = re.compile(r'^\[(.+)\]\((.+)\)', re.MULTILINE)
+LINK_TAG = r'<a href="\2">\1</a>'
 
 HR_REGEX = re.compile(r'^(___)$', re.MULTILINE)
 HR_TAG = r'<hr>'
@@ -92,15 +95,16 @@ class Converter:
             (H5_REGEX, H5_TAG),
             (H6_REGEX, H6_TAG),
             (P_REGEX, P_TAG),
-            (OLI_REGEX, OLI_TAG),
-            (ULI_REGEX, ULI_TAG),
             (BOLD_REGEX, BOLD_TAG),
             (ITALIC_REGEX, ITALIC_TAG),
+            (UNDLINE_REGEX, UNDLINE_TAG),
             (STROKE_REGEX, STROKE_TAG),
             (IMG_REGEX, IMG_TAG),
-            (A_REGEX, A_TAG),
+            (LINK_REGEX, LINK_TAG),
             (BLOCKQUOTE_REGEX, BLOCKQUOTE_TAG),
             (HR_REGEX, HR_TAG),
+            (OLI_REGEX, OLI_TAG),
+            (ULI_REGEX, ULI_TAG),
             (UL_REGEX, UL_TAG),
             (OL_REGEX, OL_TAG),
             (TABLE_REGEX, lambda match: self._parse_table(match.group(0))),
