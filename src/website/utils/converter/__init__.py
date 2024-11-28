@@ -3,6 +3,7 @@ from __future__ import annotations
 import regex as re
 from website.utils.uuid import uuid
 
+
 ULI_OBJECT = f"<{uuid.uuid()}>"
 OLI_OBJECT = f"<{uuid.uuid()}>"
 BR_OBJECT = f"<{uuid.uuid()}>"

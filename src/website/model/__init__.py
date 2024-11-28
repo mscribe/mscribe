@@ -14,15 +14,24 @@ from sqlalchemy.orm import relationship
 database = SQLAlchemy()
 
 
+class Language(database.Model):
+    __tablename__ = "language"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    language_code = Column(String(2), nullable=False)
+
+
 class Translation(database.Model):
     __tablename__ = "translation"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    language_code = Column(String(3), nullable=False)
     key = Column(String(120), nullable=False)
     value = Column(String(8000), nullable=False)
+    language_id = Column(Integer, ForeignKey('language.id'), nullable=False)
     created_date = Column(DateTime(), default=func.now())
     updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
+
+    language = relationship("Language")
 
 
 class Tag(database.Model):
@@ -60,8 +69,6 @@ class Blog(database.Model):
     created_date = Column(DateTime(), default=func.now())
     updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
 
-    blog_readers = relationship("BlogReader", back_populates="blog")
-
 
 class BlogReader(database.Model):
     __tablename__ = "BlogReader"
@@ -71,4 +78,4 @@ class BlogReader(database.Model):
     blog_id = Column(Integer, ForeignKey('Blog.id'), nullable=False)
     read_date = Column(DateTime(), default=func.now())
 
-    blog = relationship("Blog", back_populates="blog_readers")
+    blog = relationship("Blog")
