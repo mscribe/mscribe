@@ -1,4 +1,4 @@
-from website.model import Blog
+from website.schema import Blog
 
 from flask_sqlalchemy import pagination
 

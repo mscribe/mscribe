@@ -1,6 +1,6 @@
 from typing import List
 
-from website.model import Language
+from website.schema import Language
 
 
 class LanguageController:

@@ -58,7 +58,6 @@ class Blog(database.Model):
         ARCHIVED = "ARCHIVED"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    key = Column(Integer, nullable=False, unique=True)
     tk_title = Column(String(120), nullable=False, unique=True)
     tk_body = Column(String(120), nullable=False, unique=True)
     image_url = Column(String(255), nullable=True)

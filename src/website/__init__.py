@@ -1,6 +1,6 @@
 from .blueprints import index_blueprint
 from .blueprints import blog_blueprint
-from .model import database
+from .schema import database
 
 from flask import Flask
 

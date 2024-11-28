@@ -7,17 +7,17 @@
     </div>
     <div class="blogbox-body">
         <div class="blogbox-info">
-            <p class="blogbox-date">02 Sep 2022</p>
-            <p class="blogbox-title">Tada 420: Telport your cursor</p>
+            <p class="blogbox-date">{{ blog.created_date }}</p>
+            <p class="blogbox-title">{{ blog.tk_title }}</p>
         </div>
         <div class="blogbox-details">
             <div class="blogbox-stats">
                 <img class="blogbox-icon" src="{{ url_for('static', filename='images/clock.svg') }}" alt="clock">
-                <p class="blogbox-details-text">5 min</p>
+                <p class="blogbox-details-text">{{ blog.reading_time }} min</p>
             </div>
             <div class="blogbox-stats">
                 <img class="blogbox-icon" src="{{ url_for('static', filename='images/person.svg') }}" alt="person">
-                <p class="blogbox-details-text">1</p>
+                <p class="blogbox-details-text">{{ blog.readers_count }}</p>
             </div>
             <div>
                 <p class="blogbox-difficulty blogbox-details-text">Easy</p>
