@@ -1,4 +1,4 @@
-{% macro blogcontent(language, html_content) %}
+{% macro blogcontent(language, blog) %}
 <link rel="stylesheet" href="{{ url_for ('static', filename='css/blogcontent.css') }}">
 
 <div class="blogcontent-content">
@@ -6,28 +6,38 @@
     <hr class="blogcontent-divider">
     <div class="blogcontent-header">
         <div>
-            <p class="blogcontent-title">Tada 420: Telport your cursor</p>
-            <p class="blogcontent-date">02 Sep 2022</p>
+            <p class="blogcontent-title">{{ blog.title }}</p>
+            <p class="blogcontent-date">{{ blog.created_date}}</p>
             <div class="blogcontent-tags">
                 <div class="blogcontent-stats">
                     <img class="blogcontent-icon" src="{{ url_for('static', filename='images/clock.svg') }}"
                         alt="clock">
-                    <p class="blogcontent-details-text">5 min</p>
+                    <p class="blogcontent-details-text">{{ blog.reading_time}} min</p>
                 </div>
                 <div class="blogcontent-stats">
                     <img class="blogcontent-icon" src="{{ url_for('static', filename='images/person.svg') }}"
                         alt="person">
-                    <p class="blogcontent-details-text">1</p>
+                    <p class="blogcontent-details-text">{{ blog.readers }}</p>
                 </div>
                 <div>
-                    <p class="blogcontent-difficulty blogcontent-details-text">Easy</p>
+                    {% set difficulty_classes = {
+                    "EASY": "blogcontent-difficulty-easy",
+                    "MEDIUM": "blogcontent-difficulty-medium",
+                    "HARD": "blogcontent-difficulty-hard"
+                    } %}
+
+                    {% set difficulty_key = blog.difficulty.key %}
+                    {% set difficulty_class = difficulty_classes.get(difficulty_key, "blogcontent-difficulty-hard") %}
+
+                    <p class="blogcontent-difficulty {{ difficulty_class }}
+                    blogcontent-details-text">{{ blog.difficulty.value }}</p>
                 </div>
             </div>
         </div>
     </div>
     <hr class="blogcontent-divider">
     <div class="blogcontent-container">
-        {{ html_content|safe }}
+        {{ blog.body |safe }}
     </div>
 </div>
 

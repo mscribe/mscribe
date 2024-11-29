@@ -67,7 +67,18 @@
     padding-bottom: 2px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.blogcontent-difficulty-easy {
     background-color: var(--success-color);
+}
+
+.blogcontent-difficulty-medium {
+    background-color: var(--warning-color);
+}
+
+.blogcontent-difficulty-hard {
+    background-color: var(--danger-color);
 }
 
 .blogcontent-divider {

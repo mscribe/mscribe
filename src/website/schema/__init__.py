@@ -26,9 +26,14 @@ class Translation(database.Model):
     __tablename__ = "translation"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    key = Column(String(120), nullable=False)
+    key = Column(String(120), nullable=False, unique=True, index=True)
     value = Column(String(8000), nullable=False)
-    language_id = Column(Integer, ForeignKey('language.id'), nullable=False)
+
+    language_id = Column(Integer,
+                         ForeignKey('language.id'),
+                         nullable=False,
+                         index=True)
+
     created_date = Column(DateTime(), default=func.now())
     updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
 

@@ -15,6 +15,31 @@ from flask_sqlalchemy.pagination import Pagination
 
 class BlogController:
     @staticmethod
+    def get_blog(language: str, blog_id: int) -> BlogModel:
+        blog = BlogData.get_blog(blog_id)
+
+        title = tc.get_translation(language, blog.tk_title)
+        body = tc.get_translation(language, blog.tk_body)
+        status = tc.get_translation(language, blog.tk_status.value)
+
+        value = tc.get_translation(language, blog.tk_difficulty.value)
+        difficulty = KeyValue(key=blog.tk_difficulty.name, value=value)
+
+        created_date = datetime.strftime(blog.created_date, "%-d %b %Y")
+        updated_date = datetime.strftime(blog.updated_date, "%-d %b %Y")
+
+        return BlogModel(key=blog.key,
+                         title=title,
+                         body=body,
+                         image_url=blog.image_url,
+                         difficulty=difficulty,
+                         reading_time=blog.reading_time,
+                         readers=blog.readers,
+                         status=status,
+                         created_date=created_date,
+                         updated_date=updated_date)
+
+    @staticmethod
     def get_blogs(language: str,
                   page=1,
                   per_page=20,
@@ -30,8 +55,7 @@ class BlogController:
             status = tc.get_translation(language, blog.tk_status.value)
 
             value = tc.get_translation(language, blog.tk_difficulty.value)
-            difficulty = KeyValue(key=blog.tk_difficulty.name,
-                                  value=value)
+            difficulty = KeyValue(key=blog.tk_difficulty.name, value=value)
 
             created_date = datetime.strftime(blog.created_date, "%-d %b %Y")
             updated_date = datetime.strftime(blog.updated_date, "%-d %b %Y")
