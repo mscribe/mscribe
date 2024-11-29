@@ -11,7 +11,7 @@ class BlogModel:
     image_url: str
     difficulty: str
     reading_time: int
-    readers_count: int
+    readers: int
     status: BlogStatusEnum
     created_date: datetime
     updated_date: datetime

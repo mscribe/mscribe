@@ -13,10 +13,16 @@ index_blueprint = Blueprint(name="index",
 @index_blueprint.route("/<string:language>/")
 def index(language: str = None, page: int = 1) -> None:
     language = language or "en"
-    page, per_page = (request.args.get("page", 1, type=int), 20)
     languages = LanguageController.get_languages()
-    blogs = BlogController.get_blogs(page=page, per_page=per_page)
+    page, per_page = (request.args.get("page", 1, type=int), 20)
+
+    if language not in languages:
+        language = "en"
+
+    blogs, pagination = BlogController.get_blogs(language=language,
+                                                 page=page,
+                                                 per_page=per_page)
 
     return render_template("index.html",
-                           blogs=blogs.items,
-                           pagination=blogs)
+                           blogs=blogs,
+                           pagination=pagination)
