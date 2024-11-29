@@ -3,8 +3,6 @@ from website.controller import LanguageController
 
 from flask import Blueprint
 from flask import render_template
-from flask import redirect
-from flask import url_for
 from flask import request
 
 index_blueprint = Blueprint(name="index",
@@ -16,10 +14,6 @@ index_blueprint = Blueprint(name="index",
 def index(language: str = None, page: int = 1):
     default_language = "en"
     languages = LanguageController.get_languages()
-    if language is None:
-        return redirect(url_for('index.index',
-                                language=default_language,
-                                page=page))
 
     if language not in languages:
         language = default_language
@@ -30,6 +24,6 @@ def index(language: str = None, page: int = 1):
                                                  per_page=per_page)
 
     return render_template("index.html",
+                           language=language,
                            blogs=blogs,
-                           pagination=pagination,
-                           language=language)
+                           pagination=pagination)

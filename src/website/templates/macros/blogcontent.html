@@ -1,4 +1,4 @@
-{% macro blogcontent(html_content) %}
+{% macro blogcontent(language, html_content) %}
 <link rel="stylesheet" href="{{ url_for ('static', filename='css/blogcontent.css') }}">
 
 <div class="blogcontent-content">
@@ -10,11 +10,13 @@
             <p class="blogcontent-date">02 Sep 2022</p>
             <div class="blogcontent-tags">
                 <div class="blogcontent-stats">
-                    <img class="blogcontent-icon" src="{{ url_for('static', filename='images/clock.svg') }}" alt="clock">
+                    <img class="blogcontent-icon" src="{{ url_for('static', filename='images/clock.svg') }}"
+                        alt="clock">
                     <p class="blogcontent-details-text">5 min</p>
                 </div>
                 <div class="blogcontent-stats">
-                    <img class="blogcontent-icon" src="{{ url_for('static', filename='images/person.svg') }}" alt="person">
+                    <img class="blogcontent-icon" src="{{ url_for('static', filename='images/person.svg') }}"
+                        alt="person">
                     <p class="blogcontent-details-text">1</p>
                 </div>
                 <div>

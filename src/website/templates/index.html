@@ -11,7 +11,7 @@
     {% import 'macros/footer.html' as footer %}
     {% import 'macros/blogbox.html' as blogbox %}
 
-    {{ navbar.navbar() }}
+    {{ navbar.navbar(language) }}
     <div class="content">
         <div class="header">
             <div>
@@ -22,7 +22,7 @@
         <div class="blogs">
             {% if blogs %}
             {% for blog in blogs %}
-            {{ blogbox.blogbox(blog) }}
+            {{ blogbox.blogbox(language, blog) }}
             {% endfor %}
             {% else %}
             <p class="no-blogs">No blogs available.</p>
