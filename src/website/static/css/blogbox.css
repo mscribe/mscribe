@@ -77,6 +77,7 @@
     padding-right: 10px;
     background-color: var(--black-color);
 }
+
 .blogbox-icon {
     width: 18px;
     height: 18px;
@@ -95,5 +96,16 @@
     padding-bottom: 2px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.blogbox-difficulty-easy {
     background-color: var(--success-color);
+}
+
+.blogbox-difficulty-medium {
+    background-color: var(--warning-color);
+}
+
+.blogbox-difficulty-hard {
+    background-color: var(--danger-color);
 }

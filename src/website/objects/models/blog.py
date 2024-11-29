@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
+from website.objects.models.key_value import KeyValue
 from website.objects.enums import BlogStatusEnum
 
 
@@ -10,7 +11,7 @@ class BlogModel:
     title: str
     body: str
     image_url: str
-    difficulty: str
+    difficulty: KeyValue
     reading_time: int
     readers: int
     status: BlogStatusEnum

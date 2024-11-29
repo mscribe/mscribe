@@ -22,7 +22,18 @@
                     <p class="blogbox-details-text">{{ blog.readers }}</p>
                 </div>
                 <div>
-                    <p class="blogbox-difficulty blogbox-details-text">{{ blog.difficulty }}</p>
+                    {% set difficulty_classes = {
+                    "EASY": "blogbox-difficulty-easy",
+                    "MEDIUM": "blogbox-difficulty-medium",
+                    "HARD": "blogbox-difficulty-hard"
+                    } %}
+
+                    {% set difficulty_key = blog.difficulty.key %}
+                    {% set difficulty_class = difficulty_classes.get(difficulty_key, "blogbox-difficulty-hard") %}
+
+                    <p class="blogbox-difficulty {{ difficulty_class }}
+                    blogbox-details-text">{{ blog.difficulty.value}}</p>
+
                 </div>
             </div>
         </div>

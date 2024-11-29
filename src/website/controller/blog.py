@@ -1,12 +1,13 @@
 from __future__ import annotations
+from datetime import datetime
 
 from typing import List
 from typing import Tuple
 
 from website.data import BlogData
 from website.schema import Blog
+from website.objects.models import KeyValue
 from website.objects.models import BlogModel
-
 from website.controller.translation import TranslationController as tc
 
 from flask_sqlalchemy.pagination import Pagination
@@ -26,8 +27,14 @@ class BlogController:
         for blog in blogs_items:
             title = tc.get_translation(language, blog.tk_title)
             body = tc.get_translation(language, blog.tk_body)
-            difficulty = tc.get_translation(language, blog.tk_difficulty.value)
             status = tc.get_translation(language, blog.tk_status.value)
+
+            value = tc.get_translation(language, blog.tk_difficulty.value)
+            difficulty = KeyValue(key=blog.tk_difficulty.name,
+                                  value=value)
+
+            created_date = datetime.strftime(blog.created_date, "%-d %b %Y")
+            updated_date = datetime.strftime(blog.updated_date, "%-d %b %Y")
 
             blogs.append(
                 BlogModel(key=blog.key,
@@ -38,7 +45,7 @@ class BlogController:
                           reading_time=blog.reading_time,
                           readers=blog.readers,
                           status=status,
-                          created_date=blog.created_date,
-                          updated_date=blog.updated_date))
+                          created_date=created_date,
+                          updated_date=updated_date))
 
         return blogs, pagination

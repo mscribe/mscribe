@@ -10,10 +10,11 @@ body {
     gap: 20px;
     padding: 30px;
 }
+
 .content {
     padding-left: 10%;
     padding-right: 10%;
-    
+
 }
 
 a,
@@ -45,13 +46,14 @@ a:visited {
     --success-color-shade1: #53AB66;
     --success-color-shade2: #DCF1E1;
 
-    --warning-color: #B82D2D;
-    --warning-color-shade1: #AB5353;
-    --warning-color-shade2: #F1DCDC;
+    --warning-color: #97622C;
+    --warning-color-shade1: #AB7F53;
+    --warning-color-shade2: #F1E6DC;
 
-    --danger-color: #97622C;
-    --danger-color-shade1: #AB7F53;
-    --danger-color-shade2: #F1E6DC;
+    --danger-color: #B82D2D;
+    --danger-color-shade1: #AB5353;
+    --danger-color-shade2: #F1DCDC;
+
 
     --font: 'Courier New', Courier, monospace;
 
