@@ -1,3 +1,5 @@
+import os
+
 from .blueprints import index_blueprint
 from .blueprints import blog_blueprint
 from .schema import database
@@ -6,7 +8,14 @@ from flask import Flask
 
 
 def _set_config(app: Flask) -> None:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+    host = os.getenv("DATABASE_HOST")
+    user = os.getenv("DATABASE_USERNAME")
+    password = os.getenv("DATABASE_PASSWORD")
+    schema = os.getenv("DATABASE_SCHEMA")
+    port = os.getenv("DATABASE_PORT")
+    URI = f'mysql+pymysql://{user}:{password}@{host}:{port}/{schema}'
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = URI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['VERSION'] = "v0.1.0"
 
