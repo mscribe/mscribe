@@ -5,7 +5,7 @@
 <a href="/{{ language }}/blog/{{ blog.key }}">
     <div id="{{ blog.key }}" class="blogbox-post">
         <div class="blogbox-header">
-            <img class="blogbox-image" src="{{ url_for('static', filename='images/image.png') }}" alt="Blog">
+            <img class="blogbox-image" src="{{blog.image_url}}" alt="Blog">
         </div>
         <div class="blogbox-body">
             <div class="blogbox-info">

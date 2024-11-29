@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ url_for ('static', filename='css/blogcontent.css') }}">
 
 <div class="blogcontent-content">
-    <img class="blogcontent-image" src="{{ url_for('static', filename='images/image.png') }}" alt="Blog">
+    <img class="blogcontent-image" src="{{ blog.image_url }}" alt="Blog">
     <hr class="blogcontent-divider">
     <div class="blogcontent-header">
         <div>
