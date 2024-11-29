@@ -1,7 +1,6 @@
 {% macro blogbox(language, blog) %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/blogbox.css') }}">
 
-
 <a href="/{{ language }}/blog/{{ blog.key }}">
     <div id="{{ blog.key }}" class="blogbox-post">
         <div class="blogbox-header">
