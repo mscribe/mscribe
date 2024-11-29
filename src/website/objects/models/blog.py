@@ -6,6 +6,7 @@ from website.objects.enums import BlogStatusEnum
 
 @dataclass
 class BlogModel:
+    key: str
     title: str
     body: str
     image_url: str

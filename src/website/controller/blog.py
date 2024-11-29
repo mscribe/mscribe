@@ -26,18 +26,19 @@ class BlogController:
         for blog in blogs_items:
             title = tc.get_translation(language, blog.tk_title)
             body = tc.get_translation(language, blog.tk_body)
-            difficulty = tc.get_translation(language, blog.tk_difficulty)
-            status = tc.get_translation(language, blog.tk_status)
+            difficulty = tc.get_translation(language, blog.tk_difficulty.value)
+            status = tc.get_translation(language, blog.tk_status.value)
 
             blogs.append(
-                BlogModel(title=title,
+                BlogModel(key=blog.key,
+                          title=title,
                           body=body,
                           image_url=blog.image_url,
                           difficulty=difficulty,
                           reading_time=blog.reading_time,
                           readers=blog.readers,
-                          status=status
-                          )
-            )
+                          status=status,
+                          created_date=blog.created_date,
+                          updated_date=blog.updated_date))
 
         return blogs, pagination

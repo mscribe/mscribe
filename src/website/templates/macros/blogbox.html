@@ -1,28 +1,31 @@
 {% macro blogbox(blog) %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/blogbox.css') }}">
 
-<div class="blogbox-post">
-    <div class="blogbox-header">
-        <img class="blogbox-image" src="{{ url_for('static', filename='images/image.png') }}" alt="Blog">
-    </div>
-    <div class="blogbox-body">
-        <div class="blogbox-info">
-            <p class="blogbox-date">{{ blog.created_date }}</p>
-            <p class="blogbox-title">{{ blog.tk_title }}</p>
+
+<a href="/blog/{{ blog.key }}">
+    <div id="{{ blog.key }}" class="blogbox-post">
+        <div class="blogbox-header">
+            <img class="blogbox-image" src="{{ url_for('static', filename='images/image.png') }}" alt="Blog">
         </div>
-        <div class="blogbox-details">
-            <div class="blogbox-stats">
-                <img class="blogbox-icon" src="{{ url_for('static', filename='images/clock.svg') }}" alt="clock">
-                <p class="blogbox-details-text">{{ blog.reading_time }} min</p>
+        <div class="blogbox-body">
+            <div class="blogbox-info">
+                <p class="blogbox-date">{{ blog.created_date }}</p>
+                <p class="blogbox-title">{{ blog.title }}</p>
             </div>
-            <div class="blogbox-stats">
-                <img class="blogbox-icon" src="{{ url_for('static', filename='images/person.svg') }}" alt="person">
-                <p class="blogbox-details-text">{{ blog.readers_count }}</p>
-            </div>
-            <div>
-                <p class="blogbox-difficulty blogbox-details-text">Easy</p>
+            <div class="blogbox-details">
+                <div class="blogbox-stats">
+                    <img class="blogbox-icon" src="{{ url_for('static', filename='images/clock.svg') }}" alt="clock">
+                    <p class="blogbox-details-text">{{ blog.reading_time }} min</p>
+                </div>
+                <div class="blogbox-stats">
+                    <img class="blogbox-icon" src="{{ url_for('static', filename='images/person.svg') }}" alt="person">
+                    <p class="blogbox-details-text">{{ blog.readers }}</p>
+                </div>
+                <div>
+                    <p class="blogbox-difficulty blogbox-details-text">{{ blog.difficulty }}</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</a>
 {% endmacro %}
