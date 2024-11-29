@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     width: 300px;
+    height: 350px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
     border-radius: 10px;
     cursor: pointer;
@@ -17,32 +18,29 @@
 
 .blogbox-header {
     width: 100%;
-    height: 70%;
 }
 
 .blogbox-image {
     width: 100%;
-    height: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    object-fit: cover;
 }
 
 .blogbox-body {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 5px;
-    padding-bottom: 10px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-bottom: 15px;
+    padding-left: 9px;
+    padding-right: 9px;
     gap: 45px;
 }
 
 .blogbox-info {
     display: flex;
     flex-direction: column;
-    align-items: baseline;
     justify-content: space-between;
 }
 
@@ -56,8 +54,6 @@
     color: var(--black-color);
     font-family: var(--font);
     font-size: var(--font-size-base);
-    text-wrap: wrap;
-    width: 300px;
     font-weight: bold;
 }
 
