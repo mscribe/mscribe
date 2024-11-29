@@ -1,21 +1,28 @@
-from website.schema import Blog
+from __future__ import annotations
 
-from flask_sqlalchemy import pagination
+from typing import List
+from typing import Tuple
 
+from website.data import BlogData
+from website.controller import TranslationController
+from website.objects.models import BlogModel
 
+from flask_sqlalchemy.pagination import Pagination
+
+ 
 class BlogController:
     @staticmethod
-    def get_blogs(page=1,
+    def get_blogs(language: str,
+                  page=1,
                   per_page=20,
-                  is_desc: bool = True) -> pagination:
+                  is_desc: bool = True) -> Tuple[Pagination, List[BlogModel]]:
 
-        if is_desc:
-            order_by = Blog.created_date.desc()
-        else:
-            order_by = Blog.created_date.asc()
+        blogs = []
 
-        query = Blog.query.order_by(order_by)
+        pagination = BlogData.get_blogs(page, per_page, is_desc)
 
-        return query.paginate(page=page,
-                              per_page=per_page,
-                              error_out=False)
+        for blog in pagination.items:
+            blogs.append(
+                BlogModel(title=blog.title,
+                          )
+            )

@@ -63,7 +63,7 @@ class Blog(database.Model):
     image_url = Column(String(255), nullable=True)
     tk_difficulty = Column(String(120), nullable=False)
     reading_time = Column(Integer, nullable=False)
-    readers_count = Column(Integer, default=0, nullable=False)
+    readers = Column(Integer, default=0, nullable=False)
     status = Column(Enum(BlogStatus), nullable=False)
     created_date = Column(DateTime(), default=func.now())
     updated_date = Column(DateTime(), default=func.now(), onupdate=func.now())
