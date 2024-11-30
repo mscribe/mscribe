@@ -17,7 +17,7 @@ def _set_config(app: Flask) -> None:
 
     app.config['SQLALCHEMY_DATABASE_URI'] = URI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['VERSION'] = "v0.1.0"
+    app.config['VERSION'] = "v0.1.1"
 
 
 def _register_blueprints(app: Flask) -> None:
