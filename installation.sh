@@ -136,10 +136,6 @@ EOL"
 chown -R $linux_username:app /app
 chmod -R 775 /app
 
-sudo systemctl daemon-reload
-sudo systemctl start mlog
-sudo systemctl enable mlog
-
 # Nginx Configuration
 echo "Configuring Nginx..."
 sudo tee /etc/nginx/sites-available/mlog > /dev/null <<EOL
@@ -164,6 +160,10 @@ rm /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl restart nginx
 sudo systemctl enable nginx
+
+sudo systemctl daemon-reload
+sudo systemctl start mlog
+sudo systemctl enable mlog
 
 # Completion
 echo "Setup completed successfully! Your Flask app is available at http://$IP/"
