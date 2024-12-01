@@ -19,7 +19,7 @@ echo ":                                                    :";
 echo "······················································";
 
 # General Information
-VERSION=$(grep -Eroh 'v[0-9]+\.[0-9]+\.[0-9]+' . 2>/dev/null)
+VERSION=$(grep -Eroh 'v[0-9]+\.[0-9]+\.[0-9]+' src/ 2>/dev/null)
 echo "MLOG $VERSION Installation"
 sleep 2
 
