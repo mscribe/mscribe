@@ -126,6 +126,11 @@ Environment="DATABASE_SCHEMA=$database_schema"
 Environment="DATABASE_PORT=$database_port"
 ExecStart=/app/environment/bin/gunicorn --workers 3 --bind unix:/app/mlog/mlog.sock app:app
 
+Restart=on-failure
+RestartSec=15
+StartLimitBurst=10
+StartLimitIntervalSec=300
+
 [Install]
 WantedBy=multi-user.target
 EOL"
