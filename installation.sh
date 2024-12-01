@@ -111,7 +111,7 @@ sudo mysql -e "FLUSH PRIVILEGES;"
 echo "Setting up Gunicorn service..."
 sudo bash -c "cat <<EOL > /etc/systemd/system/mlog.service
 [Unit]
-Description=Gunicorn instance to serve Flask application
+Description=Gunicorn instance to serve mlog application
 After=network.target
 
 [Service]
@@ -128,8 +128,6 @@ ExecStart=/app/environment/bin/gunicorn --workers 3 --bind unix:/app/mlog/mlog.s
 
 Restart=on-failure
 RestartSec=15
-StartLimitBurst=10
-StartLimitIntervalSec=300
 
 [Install]
 WantedBy=multi-user.target
