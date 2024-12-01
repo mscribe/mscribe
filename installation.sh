@@ -20,13 +20,13 @@ echo "·····································
 
 # General Information
 VERSION=$(grep -Eroh 'v[0-9]+\.[0-9]+\.[0-9]+' src/ 2>/dev/null)
-echo "MLOG $VERSION Installation"
+echo "mscribe $VERSION Installation"
 sleep 2
 
 # Linux Credentials
 echo "Linux Credentials"
-read -p "Enter Linux username [default: mlog]: " linux_username
-linux_username=${linux_username:-mlog}
+read -p "Enter Linux username [default: mscribe]: " linux_username
+linux_username=${linux_username:-mscribe}
 linux_username=$(echo "$linux_username" | xargs)
 
 sudo adduser "$linux_username"
@@ -40,8 +40,8 @@ echo "MySQL Database Credentials"
 read -p "Enter database host [default: localhost]: " database_host
 database_host=${database_host:-localhost}
 
-read -p "Enter database user [default: mlog]: " database_user
-database_user=${database_user:-mlog}
+read -p "Enter database user [default: mscribe]: " database_user
+database_user=${database_user:-mscribe}
 
 echo -n "Enter database password: "
 stty -echo
@@ -49,8 +49,8 @@ read database_password
 stty echo
 echo
 
-read -p "Enter database schema [default: mlog]: " database_schema
-database_schema=${database_schema:-mlog}
+read -p "Enter database schema [default: mscribe]: " database_schema
+database_schema=${database_schema:-mscribe}
 
 read -p "Enter database port [default: 3306]: " database_port
 database_port=${database_port:-3306}
@@ -91,8 +91,8 @@ pip3 install gunicorn
 
 # Permissions
 echo "Setting permissions for project files..."
-sudo mkdir -p $APP_PATH/mlog
-sudo mv * $APP_PATH/mlog/
+sudo mkdir -p $APP_PATH/mscribe
+sudo mv * $APP_PATH/mscribe/
 
 # Database Setup
 if [[ "$database_host" == "localhost" ]]; then
@@ -109,22 +109,22 @@ sudo mysql -e "FLUSH PRIVILEGES;"
 
 # Gunicorn Setup
 echo "Setting up Gunicorn service..."
-sudo bash -c "cat <<EOL > /etc/systemd/system/mlog.service
+sudo bash -c "cat <<EOL > /etc/systemd/system/mscribe.service
 [Unit]
-Description=Gunicorn instance to serve mlog application
+Description=Gunicorn instance to serve mscribe application
 After=network.target
 
 [Service]
-User=mlog
+User=$linux_username
 Group=app
-WorkingDirectory=/app/mlog/src
+WorkingDirectory=/app/mscribe/src
 Environment="PATH=/app/environment/bin"
 Environment="DATABASE_HOST=$database_host"
 Environment="DATABASE_USERNAME=$database_user"
 Environment="DATABASE_PASSWORD=$database_password"
 Environment="DATABASE_SCHEMA=$database_schema"
 Environment="DATABASE_PORT=$database_port"
-ExecStart=/app/environment/bin/gunicorn --workers 3 --bind unix:/app/mlog/mlog.sock app:app
+ExecStart=/app/environment/bin/gunicorn --workers 3 --bind unix:/app/mscribe/mscribe.sock app:app
 
 Restart=on-failure
 RestartSec=15
@@ -138,32 +138,32 @@ chmod -R 775 /app
 
 # Nginx Configuration
 echo "Configuring Nginx..."
-sudo tee /etc/nginx/sites-available/mlog > /dev/null <<EOL
+sudo tee /etc/nginx/sites-available/mscribe > /dev/null <<EOL
 server {
     listen 80;
     server_name $IP;
 
     location / {
-        proxy_pass http://unix:$APP_PATH/mlog/mlog.sock;
+        proxy_pass http://unix:$APP_PATH/mscribe/mscribe.sock;
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     }
 
-    error_log /var/log/nginx/mlog_error.log;
-    access_log /var/log/nginx/mlog_access.log;
+    error_log /var/log/nginx/mscribe_error.log;
+    access_log /var/log/nginx/mscribe_access.log;
 }
 EOL
 
-sudo ln -s /etc/nginx/sites-available/mlog /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/mscribe /etc/nginx/sites-enabled
 rm /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl restart nginx
 sudo systemctl enable nginx
 
 sudo systemctl daemon-reload
-sudo systemctl start mlog
-sudo systemctl enable mlog
+sudo systemctl start mscribe
+sudo systemctl enable mscribe
 
 # Completion
 echo "Setup completed successfully! Your Flask app is available at http://$IP/"
