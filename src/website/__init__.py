@@ -1,7 +1,7 @@
 import os
 
-from .blueprints import index_blueprint
-from .blueprints import blog_blueprint
+from .blueprints import admin_blueprint
+from .blueprints import client_blueprint
 from .schema import database
 
 from flask import Flask
@@ -21,8 +21,8 @@ def _set_config(app: Flask) -> None:
 
 
 def _register_blueprints(app: Flask) -> None:
-    app.register_blueprint(index_blueprint)
-    app.register_blueprint(blog_blueprint)
+    app.register_blueprint(admin_blueprint)
+    app.register_blueprint(client_blueprint)
 
 
 def _initilize_database(app: Flask) -> None:
