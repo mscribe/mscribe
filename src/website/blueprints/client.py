@@ -1,16 +1,16 @@
 from website.controller import BlogController
 from website.controller import LanguageController
+from website.utils.converter import Converter
 
 from flask import Blueprint
 from flask import render_template
 from flask import request
 
-index_blueprint = Blueprint(name="index",
-                            import_name=__name__)
+client_blueprint = Blueprint(name="client",
+                             import_name=__name__)
 
 
-@index_blueprint.route("/")
-@index_blueprint.route("/<string:language>/")
+@client_blueprint.route("/")
 def index(language: str = None, page: int = 1):
     default_language = "en"
     languages = LanguageController.get_languages()
@@ -27,3 +27,13 @@ def index(language: str = None, page: int = 1):
                            language=language,
                            blogs=blogs,
                            pagination=pagination)
+
+
+@client_blueprint.route("/<string:language>/blog/<int:blog_id>")
+def blog(language: str, blog_id: int) -> None:
+    converter = Converter()
+    blog = BlogController.get_blog(language, blog_id)
+    blog.body = converter.convert(blog.body)
+    return render_template("blogpost.html",
+                           language=language,
+                           blog=blog)
