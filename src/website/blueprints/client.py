@@ -12,7 +12,6 @@ client_blueprint = Blueprint(name="client",
 
 @client_blueprint.route("/")
 def index(language: str = None, page: int = 1):
-    print('here')
     default_language = "en"
     languages = LanguageController.get_languages()
 

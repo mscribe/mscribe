@@ -7,4 +7,4 @@ admin_blueprint = Blueprint(name="admin",
 
 @admin_blueprint.route("/", subdomain="admin")
 def index():
-    return "admin page"
+    return "Admin page"
