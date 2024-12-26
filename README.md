@@ -1,2 +1,2 @@
-# blog
-Flask App
+# Mscribe
+A blog that is created using Flask
