@@ -29,10 +29,10 @@ def index(language: str = None, page: int = 1):
                            pagination=pagination)
 
 
-@client_blueprint.route("/<string:language>/blog/<int:blog_id>")
-def blog(language: str, blog_id: int) -> None:
+@client_blueprint.route("/<string:language>/blog/<string:blog_key>")
+def blog(language: str, blog_key: str) -> None:
     converter = Converter()
-    blog = BlogController.get_blog(language, blog_id)
+    blog = BlogController.get_blog(language, blog_key)
     blog.body = converter.convert(blog.body)
     return render_template("blogpost.html",
                            language=language,

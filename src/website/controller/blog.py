@@ -15,8 +15,8 @@ from flask_sqlalchemy.pagination import Pagination
 
 class BlogController:
     @staticmethod
-    def get_blog(language: str, blog_id: int) -> BlogModel:
-        blog = BlogData.get_blog(blog_id)
+    def get_blog(language: str, blog_key: str) -> BlogModel:
+        blog = BlogData.get_blog(blog_key)
 
         title = tc.get_translation(language, blog.tk_title)
         body = tc.get_translation(language, blog.tk_body)

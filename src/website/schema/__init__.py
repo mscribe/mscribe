@@ -59,7 +59,7 @@ class Blog(database.Model):
     __tablename__ = "Blog"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    key = Column(Integer, unique=True)
+    key = Column(String(255), unique=True)
     tk_title = Column(String(120), nullable=False, unique=True)
     tk_body = Column(String(120), nullable=False, unique=True)
     image_url = Column(String(255), nullable=True)
