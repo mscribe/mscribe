@@ -5,9 +5,9 @@ from flask_sqlalchemy import pagination
 
 class BlogData:
     @staticmethod
-    def get_blog(blog_id: int) -> Blog:
+    def get_blog(blog_key: str) -> Blog:
         return Blog.query\
-            .filter(Blog.id == blog_id)\
+            .filter(Blog.key == blog_key)\
             .first()
 
     @staticmethod
