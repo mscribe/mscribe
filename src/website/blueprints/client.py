@@ -1,10 +1,11 @@
+from flask import Blueprint
+from flask import render_template
+from flask import request
+
 from website.controller import BlogController
 from website.controller import LanguageController
 from website.utils.converter import Converter
 
-from flask import Blueprint
-from flask import render_template
-from flask import request
 
 client_blueprint = Blueprint(name="client",
                              import_name=__name__)

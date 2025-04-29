@@ -1,6 +1,6 @@
-from website.schema import Blog
-
 from flask_sqlalchemy import pagination
+
+from website.schema import Blog
 
 
 class BlogData:

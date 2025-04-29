@@ -1,10 +1,10 @@
 import os
 
+from flask import Flask
+
 from .blueprints import client_blueprint
 from .blueprints import admin_blueprint
 from .schema import database
-
-from flask import Flask
 
 
 def _set_config(app: Flask) -> None:

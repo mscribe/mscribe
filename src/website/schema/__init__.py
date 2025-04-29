@@ -1,6 +1,3 @@
-from website.objects.enums import BlogDifficultyEnum
-from website.objects.enums import BlogStatusEnum
-
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column
 from sqlalchemy import String
@@ -10,6 +7,9 @@ from sqlalchemy import Enum
 from sqlalchemy import ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
+
+from website.objects.enums import BlogDifficultyEnum
+from website.objects.enums import BlogStatusEnum
 
 
 database = SQLAlchemy()

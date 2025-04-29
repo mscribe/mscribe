@@ -1,16 +1,15 @@
 from __future__ import annotations
-from datetime import datetime
-
 from typing import List
 from typing import Tuple
+from datetime import datetime
+
+from flask_sqlalchemy.pagination import Pagination
 
 from website.data import BlogData
 from website.schema import Blog
 from website.objects.models import KeyValue
 from website.objects.models import BlogModel
 from website.controller.translation import TranslationController as tc
-
-from flask_sqlalchemy.pagination import Pagination
 
 
 class BlogController:
