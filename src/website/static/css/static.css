@@ -1,27 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--white-color);
-    gap: 20px;
-    padding: 30px;
-}
-
-.content {
-    padding-left: 10%;
-    padding-right: 10%;
-
-}
-
-a,
-a:link,
-a:visited {
-    text-decoration: none;
-}
 
 :root {
     --primary-color: #4100F5;
@@ -63,5 +47,4 @@ a:visited {
     --font-size-large: 24px;
     --font-size-xlarge: 28px;
     --font-size-xxlarge: 32px;
-
 }

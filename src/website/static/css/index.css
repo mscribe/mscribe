@@ -1,60 +1,6 @@
 @import './static.css';
 
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
 
-
-
-
-.title {
-    font-size: var(--font-size-xlarge);
-    font-family: var(--font);
-    color: var(--black-color);
-    font-weight: bold;
-}
-
-.blogs {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 25px;
-
-}
-
-.no-blogs {
-    font-family: var(--font);
-    font-size: var(--font-size-base);
-}
-
-.navigation {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-
-.navigation-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90px;
-    height: 30px;
-    color: var(--white-color);
-    background-color: var(--black-color);
-    font-size: var(--font-size-base);
-    font-family: var(--font);
-    font-weight: 800;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.disabled {
-    background-color: var(--accent-color-shade3);
-    cursor: not-allowed;
-    pointer-events: none;
+body {
+    background: #F1F5F9;
 }

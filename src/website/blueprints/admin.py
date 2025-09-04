@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 
-admin_blueprint = Blueprint(name="admin",
+admin_blueprint = Blueprint("admin_blueprint",
                             import_name=__name__)
 
 

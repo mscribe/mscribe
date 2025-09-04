@@ -1,7 +1,7 @@
-from website import create_website
+from website import get_app
 
 
-app = create_website()
+app = get_app()
 
 
 if __name__ == "__main__":

@@ -1,68 +1,65 @@
-@import './static.css';
+.navbar {
+    background: #FFFFFF;
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-bottom: 1px solid rgba(69, 85, 107, 0.3);
+}
 
-.navbar-bar {
+.blog-logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--white-color);
-    margin-bottom: 35px;
+    gap: 8px;
 }
 
-.navbar-title {
-    font-size: var(--font-size-xxlarge);
-    font-family: var(--font);
-    font-weight: bold;
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-.navbar-search-container {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-search-bar {
-    padding: 5px;
-    width: 400px;
-    height: 32px;
-    font-size: 14px;
-    font-family: var(--font);
-    border: none;
-    background-color: var(--white-color);
-    color: var(--black-color);
-    border: 1px solid var(--black-color);
+.blog-logo img {
     border-radius: 8px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.navbar-5);
 }
 
-.navbar-search-bar:focus {
-    outline: none;
-    color: var(--black-color);
+.blog-logo span {
+    font-family: 'Outfit';
+    font-size: 24px;
+    font-weight: 700;
+    color: #1D293D;
 }
 
-.navbar-search-button {
+.blog-pages {
     display: flex;
-    justify-content: center;
+    gap: 32px;
+}
+
+
+.blog-pages span {
+    font-family: 'Outfit';
+    font-size: 18px;
+    color: black;
+
+}
+
+.blog-items {
+    display: flex;
     align-items: center;
-    background-color: #000000;
-    border: none;
-    border-radius: 50%;
-    padding: 5px;
-    cursor: pointer;
-    margin-left: 5px;
+    gap: 16px;
 }
 
-@media (max-width: 700px) {
-    .navbar-search-bar {
-        display: none;
-    }
-
-    .navbar-search-button {
-        display: none;
-    }
+.blog-items .subscribe {
+    width: 130px;
+    height: 52px;
+    background: #1D293D;
+    color: white;
+    border-radius: 80px;
+    outline: none;
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 700;
 }
 
-.navbar-search-image {
-    width: 22px;
-    height: 22px;
+.blog-items .search {
+    width: 24px;
+    height: 24px;
+    color: rgb(69, 85, 107);
 }

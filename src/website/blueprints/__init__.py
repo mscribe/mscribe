@@ -1,8 +1,8 @@
 from .admin import admin_blueprint
-from .client import client_blueprint
+from .reader import reader_blueprint
 
 
-__all__ = [
-    "client_blueprint",
-    "admin_blueprint",
+all_blueprints = [
+    admin_blueprint,
+    reader_blueprint
 ]
