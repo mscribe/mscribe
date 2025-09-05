@@ -1,0 +1,25 @@
+{% macro build() %}
+<div class="post-container">
+    <img src="{{ url_for('static', filename='images/mscribe.png')}}" alt="" class="thumbnail">
+    <div class="metadata">
+        <span class="post-tag">creativity</span>
+        <span class="post-title">The Psychology of Color in UI/UX Design</span>
+        <div class="post-stats">
+            <div class="post-number">
+                {% include 'icons/view.svg'%}
+                <span>200.5K views</span>
+            </div>
+            <div>•</div>
+            <div class="post-number">
+                {% include 'icons/calender.svg'%}
+                <span>26 Oct 2025</span>
+            </div>
+            <div>•</div>
+            <div class="post-number">
+                {% include 'icons/read.svg'%}
+                <span>60 min read</span>
+            </div>
+        </div>
+    </div>
+</div>  
+{% endmacro %}

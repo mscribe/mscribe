@@ -4,8 +4,8 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Outfit';
 }
-
 
 :root {
     --primary-color: #4100F5;
@@ -35,9 +35,8 @@
     --warning-color-shade2: #F1E6DC;
 
     --danger-color: #B82D2D;
-    --danger-color-shade1: #AB5353;
+    --danger-color-shade1: hsl(0, 35%, 50%);
     --danger-color-shade2: #F1DCDC;
-
 
     --font: 'Courier New', Courier, monospace;
 
@@ -47,4 +46,5 @@
     --font-size-large: 24px;
     --font-size-xlarge: 28px;
     --font-size-xxlarge: 32px;
+    --font-size-xxxlarge: 64px;
 }

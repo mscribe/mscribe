@@ -7,12 +7,22 @@
     <title>mscribe</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <script src='index.js'></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/preview-post.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/latest-posts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post-container.css') }}">
 </head>
 
 <body>
     {% import 'macro/navbar.html' as navbar %}
+    {% import 'macro/preview-post.html' as preview_post %}
+    {% import 'macro/latest-posts.html' as latest_posts %}
+
     {{ navbar.build() }}
+    {{ preview_post.build() }}
+    {{ latest_posts.build() }}
+
+    <script src='index.js'></script>
 </body>
 
 </html>
