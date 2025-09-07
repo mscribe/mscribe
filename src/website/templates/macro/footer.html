@@ -1,0 +1,38 @@
+{% macro build() %}
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-blog footer-list">
+            <div class="footer-name">
+                <img src="{{ url_for('static', filename='images/mscribe.png')}}" alt="icon" width="40px" height="40px">
+                <span class="footer-title">mscribe</span>
+            </div>
+            <span class="footer-body">A modern blog for curious minds,
+                exploring design, technology, and
+                creativity.
+            </span>
+        </div>
+
+        <div class="footer-list">
+            <span class="footer-title">Navigate</span>
+            <span class="footer-body">Home</span>
+            <span class="footer-body">Articles</span>
+            <span class="footer-body">About Us</span>
+            <span class="footer-body">Contact</span>
+        </div>
+
+        <div class="footer-list">
+            <span class="footer-title">Categires</span>
+            <span class="footer-body">Design</span>
+            <span class="footer-body">Development</span>
+            <span class="footer-body">Creativity</span>
+        </div>
+    </div>
+    <hr class="footer-divider">
+    <span class="footer-copyright">© 2025 mscribe. All rights reserved.</span>
+</div>
+
+
+
+
+
+{% endmacro %}

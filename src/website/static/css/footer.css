@@ -1,0 +1,53 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #0F172B;
+    height: 350px;
+    padding: 48px 24px 48px 24px;
+}
+
+.footer-content {
+    display: flex;
+    gap: 64px;
+}
+
+.footer-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-title {
+    display: flex;
+    font-size: 24px;
+    color: white;
+    font-weight: 700;
+}
+
+.footer-body {
+    font-size: 20px;
+    color: gray;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 500px;
+}
+
+.footer-divider {
+    background: gray;
+    width: 90%;
+    height: 1px;
+    border: none;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.footer-copyright {
+    color: gray;
+    font-size: 16px;
+}
