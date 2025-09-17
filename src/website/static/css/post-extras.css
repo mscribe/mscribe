@@ -1,0 +1,24 @@
+.post-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.post-extras-tags {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.post-extras-share {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.post-extras svg {
+    width: 30px;
+    height: 30px;
+    fill: #62748E;
+}

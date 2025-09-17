@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>mscribe</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post-preview.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post-content.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post-extras.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+</head>
+
+<body>
+    {% import 'macro/navbar.html' as navbar %}
+    {% import 'macro/post-preview.html' as post_preview %}
+    {% import 'macro/post-content.html' as post_content %}
+    {% import 'macro/post-extras.html' as post_extras %}
+    {% import 'macro/footer.html' as footer %}
+
+    {{ navbar.build() }}
+    <div class="post-container">
+        <div class="post">
+            {{ post_preview.build() }}
+            {{ post_extras.build() }}
+        </div>
+    </div>
+    {{ footer.build() }}
+
+    <script src='index.js'></script>
+</body>
+
+</html>

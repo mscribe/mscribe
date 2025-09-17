@@ -1,4 +1,4 @@
-.preview-post {
+.highlight {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,14 +8,14 @@
     gap: 250px;
 }
 
-.preview-post .metadata {
+.highlight .metadata {
     display: flex;
     flex-direction: column;
     width: 700px;
     gap: 15px;
 }
 
-.preview-post .metadata .tag {
+.highlight .metadata .tag {
     width: max-content;
     padding: 5px;
     border-radius: 10px;
@@ -28,36 +28,36 @@
     -moz-box-shadow: 0px 7px 9px -6px rgba(0, 0, 0, 0.61);
 }
 
-.preview-post .metadata .title {
+.highlight .metadata .title {
     font-size: 60px;
     font-weight: 700;
 }
 
-.preview-post .metadata .description {
+.highlight .metadata .description {
     font-size: 20px;
     text-align: justify;
 }
 
-.preview-post .metadata .stats {
+.highlight .metadata .stats {
     display: flex;
     align-items: center;
     gap: 10px;
     color: #62748E;
 }
 
-.preview-post .metadata .stats .number {
+.highlight .metadata .stats .number {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.preview-post .metadata .stats svg {
+.highlight .metadata .stats svg {
     width: 20px;
     height: 20px;
     fill: #62748E;
 }
 
-.preview-post .thumbnail img {
+.highlight .thumbnail img {
     width: 500px;
     height: 400px;
 }

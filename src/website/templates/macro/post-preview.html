@@ -1,0 +1,25 @@
+{% macro build() %}
+<div class="post-preview">
+    <span class="post-preview-title">
+        The Unseen Symphony of
+        Everyday Design
+    </span>
+    <div class="post-preview-stats">
+        <div class="post-preview-number">
+            {% include 'icons/view.svg'%}
+            <span>2.5K views</span>
+        </div>
+        <div>•</div>
+        <div class="post-preview-number">
+            {% include 'icons/calender.svg'%}
+            <span>2.5K views</span>
+        </div>
+        <div>•</div>
+        <div class="post-preview-number">
+            {% include 'icons/read.svg'%}
+            <span>8 min read</span>
+        </div>
+    </div>
+    <img src="{{ url_for('static', filename='images/mecca.webp') }}" alt="" class="post-preview-thumbnail">
+</div>
+{% endmacro %}
