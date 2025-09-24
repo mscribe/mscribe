@@ -6,26 +6,24 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>mscribe</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/highlight.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/latest-posts.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/post-container.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/shared/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/shared/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/index/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/index/highlight.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/index/latest-posts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/index/post-container.css') }}">
 </head>
 
 <body>
-    {% import 'macro/navbar.html' as navbar %}
-    {% import 'macro/highlight.html' as highlight %}
-    {% import 'macro/latest-posts.html' as latest_posts %}
-    {% import 'macro/footer.html' as footer %}
+    {% import 'macro/shared/navbar.html' as navbar %}
+    {% import 'macro/shared/footer.html' as footer %}
+    {% import 'macro/index/highlight.html' as highlight %}
+    {% import 'macro/index/latest-posts.html' as latest_posts %}
 
     {{ navbar.build() }}
     {{ highlight.build() }}
     {{ latest_posts.build() }}
     {{ footer.build() }}
-
-    <script src='index.js'></script>
 </body>
 
 </html>

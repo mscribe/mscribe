@@ -1,6 +1,6 @@
 @import './static.css';
 
-.post-preview {
+.post-preview-container {
     display: flex;
     flex-direction: column;
     align-items: center;

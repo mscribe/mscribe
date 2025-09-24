@@ -1,0 +1,5 @@
+@import '../../static.css';
+
+body {
+    background: var(--secondary-color);
+}

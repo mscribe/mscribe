@@ -1,0 +1,12 @@
+{% macro build() %}
+{% import 'macro/index/post-container.html' as post_container %}
+<div class="latest-posts-container">
+    <span class="latest-posts-title">Latest Posts</span>
+    <div class="latest-posts-posts">
+        {{ post_container.build() }}
+        {{ post_container.build() }}
+        {{ post_container.build() }}
+        {{ post_container.build() }}
+    </div>
+</div>
+{% endmacro %}

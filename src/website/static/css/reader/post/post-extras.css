@@ -1,4 +1,4 @@
-.post-extras {
+.post-extras-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +17,7 @@
     gap: 16px;
 }
 
-.post-extras svg {
+.post-extras-share svg {
     width: 30px;
     height: 30px;
     fill: #62748E;

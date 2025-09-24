@@ -1,4 +1,4 @@
-.highlight {
+.highlight-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,14 +8,14 @@
     gap: 250px;
 }
 
-.highlight .metadata {
+.highlight-metadata {
     display: flex;
     flex-direction: column;
     width: 700px;
     gap: 15px;
 }
 
-.highlight .metadata .tag {
+.highlight-tag {
     width: max-content;
     padding: 5px;
     border-radius: 10px;
@@ -28,36 +28,36 @@
     -moz-box-shadow: 0px 7px 9px -6px rgba(0, 0, 0, 0.61);
 }
 
-.highlight .metadata .title {
+.highlight-title {
     font-size: 60px;
     font-weight: 700;
 }
 
-.highlight .metadata .description {
+.highlight-description {
     font-size: 20px;
     text-align: justify;
 }
 
-.highlight .metadata .stats {
+.highlight-stats {
     display: flex;
     align-items: center;
     gap: 10px;
     color: #62748E;
 }
 
-.highlight .metadata .stats .number {
+.highlight-number {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.highlight .metadata .stats svg {
+.highlight-stats svg {
     width: 20px;
     height: 20px;
     fill: #62748E;
 }
 
-.highlight .thumbnail img {
+.highlight-thumbnail img {
     width: 500px;
     height: 400px;
 }
