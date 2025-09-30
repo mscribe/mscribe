@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #0F172B;
+    background: var(--accent-color);
     height: 350px;
     padding: 48px 24px 48px 24px;
 }
@@ -21,14 +21,14 @@
 
 .footer-title {
     display: flex;
-    font-size: 24px;
-    color: white;
+    font-size: var(--font-size-large);
+    color: var(--white-color);
     font-weight: 700;
 }
 
 .footer-body {
-    font-size: 20px;
-    color: gray;
+    font-size: var(--font-size-medium);
+    color: var(--secondary-color-shade3);
 }
 
 .footer-list {
@@ -39,7 +39,7 @@
 }
 
 .footer-divider {
-    background: gray;
+    background: var(--accent-color-shade2);
     width: 90%;
     height: 1px;
     border: none;
@@ -48,6 +48,6 @@
 }
 
 .footer-copyright {
-    color: gray;
+    color: var(--secondary-color-shade3);
     font-size: 16px;
 }

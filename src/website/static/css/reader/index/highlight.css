@@ -4,7 +4,7 @@
     align-items: center;
     padding-top: 80px;
     padding-bottom: 80px;
-    background: #ededed;
+    background: var(--secondary-color-shade1);
     gap: 250px;
 }
 
@@ -19,10 +19,10 @@
     width: max-content;
     padding: 5px;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: var(--font-size-small);
     font-weight: 700;
-    color: #F54900;
-    background: #FFEDD4;
+    color: var(--primary-color);
+    background: var(--secondary-color-shade1);
     box-shadow: 0px 7px 9px -6px rgba(0, 0, 0, 0.61);
     -webkit-box-shadow: 0px 7px 9px -6px rgba(0, 0, 0, 0.61);
     -moz-box-shadow: 0px 7px 9px -6px rgba(0, 0, 0, 0.61);
@@ -34,7 +34,7 @@
 }
 
 .highlight-description {
-    font-size: 20px;
+    font-size: var(--font-size-medium);
     text-align: justify;
 }
 
@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #62748E;
+    color: var(--secondary-color-shade3);
 }
 
 .highlight-number {
@@ -54,7 +54,7 @@
 .highlight-stats svg {
     width: 20px;
     height: 20px;
-    fill: #62748E;
+    fill: var(--secondary-color-shade3);
 }
 
 .highlight-thumbnail img {

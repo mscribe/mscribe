@@ -13,14 +13,14 @@
     --primary-color-shade3: #FBB699;
 
     --secondary-color: #F1F5F9;
-    --secondary-color-shade1: #C1C4C7;
+    --secondary-color-shade1: #EDEDED;
     --secondary-color-shade2: #919395;
     --secondary-color-shade3: #797B7D;
 
     --accent-color: #0F172B;
     --accent-color-shade1: #272E40;
     --accent-color-shade2: #575D6B;
-    --accent-color-shade3: #878B95;
+    --accent-color-shade3: rgba(69, 85, 107, 0.3);
 
     --white-color: white;
     --black-color: black;
@@ -37,10 +37,11 @@
     --danger-color-shade1: #CD3339;
     --danger-color-shade2: #DA666A;
 
-    --font-size-small: 12px;
+    --font-size-xsmall: 12px;
+    --font-size-small: 14px;
     --font-size-base: 16px;
     --font-size-medium: 18px;
-    --font-size-large: 24px;
+    --font-size-large: 21px;
     --font-size-xlarge: 28px;
     --font-size-xxlarge: 32px;
     --font-size-xxxlarge: 64px;

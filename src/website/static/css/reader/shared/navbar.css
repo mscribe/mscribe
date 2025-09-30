@@ -1,12 +1,12 @@
 .navbar-container {
-    background: #FFFFFF;
+    background: var(--white-color);
     display: flex;
     height: 80px;
     justify-content: space-between;
     align-items: center;
     padding-left: 24px;
     padding-right: 24px;
-    border-bottom: 1px solid rgba(69, 85, 107, 0.3);
+    border-bottom: 1px solid var(--accent-color-shade3);
 }
 
 .navbar-blog-logo {
@@ -21,10 +21,9 @@
 }
 
 .navbar-blog-logo span {
-    font-family: 'Outfit';
-    font-size: 24px;
+    font-size: var(--font-size-large);
+    color: var(--accent-color);
     font-weight: 700;
-    color: #1D293D;
 }
 
 .navbar-blog-pages {
@@ -33,8 +32,7 @@
 }
 
 .navbar-blog-pages span {
-    font-family: 'Outfit';
-    font-size: 18px;
+    font-size: var(--font-size-medium);
     color: black;
 
 }
@@ -48,17 +46,16 @@
 .navbar-blog-items .subscribe {
     width: 130px;
     height: 52px;
-    background: #1D293D;
-    color: white;
+    background: var(--accent-color);
+    color: var(--white-color);
     border-radius: 80px;
     outline: none;
-    font-family: 'Outfit';
-    font-size: 18px;
+    font-size: var(--font-size-medium);
     font-weight: 700;
 }
 
 .navbar-blog-items .search {
     width: 24px;
-    height: 24px;
-    color: rgb(69, 85, 107);
+    height: 200px;
+    color: var(--accent-color-shade2);
 }
