@@ -1,12 +1,11 @@
-@import '../../static.css';
-
 .post-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .post {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    gap: 30px;
+    width: 60%;
 }

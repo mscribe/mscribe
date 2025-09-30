@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>mscribe</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/static.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/shared/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/shared/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/post/post.css') }}">
@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/post/post-content.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reader/post/post-extras.css') }}">
 </head>
-
 <body>
     {% import 'macro/shared/navbar.html' as navbar %}
     {% import 'macro/shared/footer.html' as footer %}
@@ -30,8 +29,5 @@
         </div>
     </div>
     {{ footer.build() }}
-
-    <script src='index.js'></script>
 </body>
-
 </html>
