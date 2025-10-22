@@ -1,0 +1,35 @@
+.component-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.component-input-label {
+    font-size: var(--font-size-medium);
+    color: var(--accent-color-shade1);
+    font-weight: 600;
+}
+
+.component-input-input {
+    width: 450px;
+    height: 55px;
+    font-size: var(--font-size-medium);
+    padding: 3px 8px 3px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-color-shade3);
+}
+
+.component-input-input:focus {
+    outline: none;
+    border: 1px solid var(--accent-color);
+}
+
+.component-input-input::selection {
+    background: var(--accent-color-shade3);
+}
+
+.component-input-input::placeholder {
+    color: var(--secondary-color-shade3);
+}
+

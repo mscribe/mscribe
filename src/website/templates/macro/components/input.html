@@ -1,0 +1,6 @@
+{% macro build(id, label, placeholder="", type="text") %}
+<div class="component-input">
+    <label class="component-input-label" for="{{id}}">{{label}}</label>
+    <input class="component-input-input" id="{{id}}" type="{{type}}" placeholder="{{placeholder}}">
+</div>
+{% endmacro %}

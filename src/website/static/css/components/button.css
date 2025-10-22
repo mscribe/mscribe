@@ -1,0 +1,35 @@
+.component-button-input {
+    height: 55px;
+    border-radius: 8px;
+    font-size: var(--font-size-medium);
+    font-weight: 800;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+}
+
+.component-button-input:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(187, 187, 187, 0.2);
+}
+
+.component-button-primary {
+    background: var(--primary-color-shade1);
+    color: var(--white-color);
+
+}
+
+.component-button-secondary {
+    background: var(--accent-color-shade3);
+    color: var(--accent-color-shade1);
+}
+
+
+.component-button-half-width {
+    width: 130px;
+
+}
+
+.component-button-full-width {
+    width: 465px;
+}

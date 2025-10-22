@@ -1,0 +1,16 @@
+{% macro build(id, label, is_secondary=false, is_half_width=false) %}
+<div class="component-button">
+    <input class="component-button-input 
+    {% if (is_secondary) %}
+        component-button-secondary
+    {% else %}
+        component-button-primary
+    {% endif %}
+    
+    {% if (is_half_width) %}
+        component-button-half-width
+    {% else %}
+        component-button-full-width
+    {% endif %}" id="{{id}}" type="button" value="{{label}}">
+</div>
+{% endmacro %}
