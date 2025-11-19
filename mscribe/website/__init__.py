@@ -1,5 +1,5 @@
 from flask import Flask
-from website.base import setup
+from mscribe.website.base import setup
 
 
 def get_app() -> Flask:

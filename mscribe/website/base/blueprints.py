@@ -1,5 +1,5 @@
 from flask import Flask
-from website.blueprints import all_blueprints
+from mscribe.website.blueprints import all_blueprints
 
 
 def register_blueprints(app: Flask) -> None:

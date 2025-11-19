@@ -1,6 +1,6 @@
 from flask import Flask
 
-from website.schema import database
+from mscribe.website.schema import database
 
 
 def initilize_database(app: Flask) -> None:
